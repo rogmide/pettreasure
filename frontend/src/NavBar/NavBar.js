@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "../UseContext";
+import "./NavBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 const NoUserLogIn = () => {
   return (
@@ -40,9 +43,15 @@ const NavBar = () => {
   const { currUser, logout } = useContext(UserContext);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-md">
       <Link className="navbar-brand" to="/">
-        Unnamed-CapStone
+        <div className="titleHolder">
+        <FontAwesomeIcon className="titleIcon" icon={faPaw} />
+        <span className="titlePage">
+          {" "}
+          <span style={{color: "darkred"}}>Pet</span>Treasure{" "}
+        </span>
+        </div>
       </Link>
       {currUser ? isLogIn(currUser.firstName, logout) : NoUserLogIn()}
     </nav>

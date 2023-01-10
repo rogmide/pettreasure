@@ -1,0 +1,14 @@
+.titlePage {
+  font-weight: bolder;
+  align-self: center;
+}
+
+.titleIcon {
+  color: red;
+  margin-right: 10px;
+  font-size: 35px;
+}
+
+.titleHolder {
+  display: flex;
+}
