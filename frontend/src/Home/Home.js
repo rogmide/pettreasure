@@ -20,19 +20,9 @@ const NeedLogIn = () => {
 
 const Home = () => {
   const { currUser } = useContext(UserContext);
+  // {currUser ? <h2>Welcome Back, {currUser.firstName} !</h2> : NeedLogIn()}
 
-  return (
-    <div className="Home">
-      <div className="container text-center">
-        <h1 className="mb-3 font-weight-bold" style={{ color: "#343a40" }}>
-          Unnamed-CapStone
-        </h1>
-        <p>All the jobs in one, convenient place.</p>
-        {/* Checking if the user is login */}
-        {currUser ? <h2>Welcome Back, {currUser.firstName} !</h2> : NeedLogIn()}
-      </div>
-    </div>
-  );
+  return <div className="Home container"></div>;
 };
 
 export default Home;

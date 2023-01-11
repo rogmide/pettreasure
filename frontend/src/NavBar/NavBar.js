@@ -35,8 +35,11 @@ const SearchHeartIcons = () => {
           </div>
         </div>
       </div>
-      <NavLink className="nav-link  mouseOverIcon" to="/login">
-        <FontAwesomeIcon style={{ color: "5c717a" }} icon={faHeart} />
+      <NavLink className="nav-link mouseOverIcon" to="/login">
+        <FontAwesomeIcon
+          style={{ color: "5c717a", fontSize: "18px" }}
+          icon={faHeart}
+        />
       </NavLink>
     </div>
   );
@@ -44,18 +47,46 @@ const SearchHeartIcons = () => {
 
 const NoUserLogIn = () => {
   return (
+    // <ul className="navbar-nav ml-auto iconSearch">
+    //   <div className="bigScreen">{SearchHeartIcons()}</div>
+    //   <li className="nav-item mr-4">
+    //     <NavLink className="nav-link" to="/login">
+    //       <span className="nav-btn">Login</span>
+    //     </NavLink>
+    //   </li>
+    //   <li className="nav-item mr-4">
+    //     <NavLink className="nav-link" to="/signup">
+    //       <span className="nav-btn">Sign Up</span>
+    //     </NavLink>
+    //   </li>
+    // </ul>
     <ul className="navbar-nav ml-auto iconSearch">
-      <div className="bigScreen">{SearchHeartIcons()}</div>
-      <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/login">
-          <span className="nav-btn">Login</span>
-        </NavLink>
-      </li>
-      <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/signup">
-          <span className="nav-btn">Sign Up</span>
-        </NavLink>
-      </li>
+      <li className="nav-item mr-4 bigScreen">{SearchHeartIcons()}</li>
+      <div className="dropdown">
+        <button
+          className="dropdown-toggle nav-btn"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Log/Sign Up
+        </button>
+        <div
+          className="dropdown-menu dropMenu "
+          aria-labelledby="dropdownMenuButton"
+        >
+          <div className="dropMenuItemHolder">
+            <NavLink className="nav-link active dropMenuItem" to="/login">
+              Login
+            </NavLink>
+            <NavLink className="nav-link active dropMenuItem" to="/signup">
+              Sign Up
+            </NavLink>
+          </div>
+        </div>
+      </div>
     </ul>
   );
 };
@@ -110,7 +141,7 @@ const middleMenu = () => {
       </li>
       <li className="nav-item mr-4">
         <NavLink className="nav-link" to="/aboutus">
-          About us
+          About Us
         </NavLink>
       </li>
       <li className="nav-item mr-4">
@@ -131,7 +162,11 @@ const NavBar = () => {
   const { currUser, logout } = useContext(UserContext);
 
   return (
-    <nav className="container navbar navbar-expand-lg " role="navigation">
+    <nav
+      className="container navbar navbar-expand-lg "
+      role="navigation"
+      style={{ height: "100px" }}
+    >
       <Link className="navbar-brand" to="/">
         <div className="titleHolder">
           <FontAwesomeIcon className="titleIcon" icon={faPaw} />
