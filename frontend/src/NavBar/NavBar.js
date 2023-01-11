@@ -80,18 +80,10 @@ const isLogIn = (name, logout) => {
           aria-labelledby="dropdownMenuButton"
         >
           <div className="dropMenuItemHolder">
-            <NavLink
-              className="nav-link active dropMenuItem"
-              to="/profile"
-              // onClick={logout}
-            >
+            <NavLink className="nav-link active dropMenuItem" to="/profile">
               Account Info
             </NavLink>
-            <NavLink
-              className="nav-link active dropMenuItem"
-              to="/"
-              onClick={logout}
-            >
+            <NavLink className="nav-link active dropMenuItem" to="/">
               My Recent Search
             </NavLink>
             <NavLink
@@ -160,7 +152,7 @@ const NavBar = () => {
         data-toggle="collapse"
         data-target="#collapsibleNavbar"
       >
-        <FontAwesomeIcon style={{ color: "5c717a" }} icon={faBars} />
+        <FontAwesomeIcon style={{ color: "#5c717a" }} icon={faBars} />
       </button>
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         {middleMenu()}
