@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Routes_Base from "./Routes/Routes_Base";
 import jwtDecode from "jwt-decode";
-import JoblyApi from "./API/Api";
+import PetTreasureApi from "./API/Api";
 import UserContext from "./UseContext";
 import useLocalStore from "./CommunComponent/useLocalStore";
 
@@ -15,8 +15,8 @@ function App() {
         if (token) {
           try {
             let { username } = jwtDecode(token);
-            JoblyApi.token = token;
-            setCurrUser(await JoblyApi.getUser(username));
+            PetTreasureApi.token = token;
+            setCurrUser(await PetTreasureApi.getUser(username));
           } catch (error) {
             console.log(error);
           }
@@ -29,7 +29,7 @@ function App() {
 
   async function login(info) {
     try {
-      let token = await JoblyApi.login(info);
+      let token = await PetTreasureApi.login(info);
       setToken(token);
       return true;
     } catch (errors) {
@@ -39,7 +39,7 @@ function App() {
 
   async function signup(info) {
     try {
-      let token = await JoblyApi.signup(info);
+      let token = await PetTreasureApi.signup(info);
       setToken(token);
       return true;
     } catch (errors) {

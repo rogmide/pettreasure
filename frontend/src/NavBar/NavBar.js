@@ -104,22 +104,22 @@ const middleMenu = () => {
   return (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/profile">
+        <NavLink className="nav-link" to="/">
           Home
         </NavLink>
       </li>
       <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/">
+        <NavLink className="nav-link" to="/aboutus">
           About us
         </NavLink>
       </li>
       <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/">
+        <NavLink className="nav-link" to="/organizations">
           Organizations
         </NavLink>
       </li>
       <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/">
+        <NavLink className="nav-link" to="/gallery">
           Gallery
         </NavLink>
       </li>
