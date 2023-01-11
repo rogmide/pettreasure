@@ -9,6 +9,7 @@ import UserContext from "../UseContext";
 import AboutUs from "../AboutUs/AboutUs";
 import Organizations from "../Organizations/OrganizationsList";
 import Gallery from "../Gallery/Gallery";
+import "./Routes_Base.css";
 
 function Routes_Base({ login, signup }) {
   const { currUser } = useContext(UserContext);
@@ -27,27 +28,33 @@ function Routes_Base({ login, signup }) {
   return (
     <BrowserRouter>
       <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route
-          exact
-          path="/login"
-          element={<LoginForm login={login} />}
-        ></Route>
-        <Route
-          exact
-          path="/signup"
-          element={<SignUpForm signup={signup} />}
-        ></Route>
-        <Route exact path="/aboutus" element={<AboutUs />}></Route>
-        <Route exact path="/organizations" element={<Organizations />}></Route>
-        <Route exact path="/gallery" element={<Gallery />}></Route>
+      <div className="container MainContent">
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route
+            exact
+            path="/login"
+            element={<LoginForm login={login} />}
+          ></Route>
+          <Route
+            exact
+            path="/signup"
+            element={<SignUpForm signup={signup} />}
+          ></Route>
+          <Route exact path="/aboutus" element={<AboutUs />}></Route>
+          <Route
+            exact
+            path="/organizations"
+            element={<Organizations />}
+          ></Route>
+          <Route exact path="/gallery" element={<Gallery />}></Route>
 
-        {/* Ensuring that the user is login to access this routes */}
-        {SecureRoute("/profile", <UserProfile />)}
+          {/* Ensuring that the user is login to access this routes */}
+          {SecureRoute("/profile", <UserProfile />)}
 
-        <Route path="*" element={<Navigate exact="true" to="/" />}></Route>
-      </Routes>
+          <Route path="*" element={<Navigate exact="true" to="/" />}></Route>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

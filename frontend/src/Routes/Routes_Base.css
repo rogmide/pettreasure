@@ -1,6 +1,6 @@
-/* .Home {
-  margin-top: 10px;
+.MainContent {
+  margin-top: 20px;
   height: 100vh;
   width: calc(100% - 15px);
   border: 2px solid black;
-} */
+}

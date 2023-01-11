@@ -1,6 +1,7 @@
 @media screen and (min-width: 990px) {
   .smallScreen {
     visibility: hidden;
+    width: 0px;
   }
   .dropMenu {
     position: absolute;
