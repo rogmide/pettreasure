@@ -3,6 +3,27 @@
   align-self: center;
 }
 
+a {
+  color: #5c717b;
+}
+
+a:hover {
+  color: #404040;
+}
+
+.iconSearch {
+  color: #5c717a;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.mouseOverIcon:hover {
+  text-decoration: none;
+  font-size: 20px;
+  transform: translate(-2px, -2px);
+}
+
 .titleIcon {
   color: red;
   margin-right: 10px;
@@ -11,4 +32,62 @@
 
 .titleHolder {
   display: flex;
+}
+
+/* CSS */
+.nav-btn {
+  width: 60px;
+  height: 35px;
+  appearance: button;
+  background-color: #f36250;
+  background-image: none;
+  border: 1px solid #183543;
+  border-radius: 4px;
+  box-shadow: #183543 4px 4px 0 0, #183543 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 40px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-btn:focus {
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  text-decoration: none;
+  box-shadow: #183543 6px 6px 0 0, #183543 6px 6px 0 1px;
+  transform: translate(-2px, -2px);
+}
+
+.nav-btn:active {
+  box-shadow: rgba(24, 53, 67, 0.125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.nav-btn:not([disabled]):active {
+  box-shadow: #183543 2px 2px 0 0, #183543 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .nav-btn {
+    padding: 12px 50px;
+  }
 }
