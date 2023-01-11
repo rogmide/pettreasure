@@ -28,10 +28,10 @@ const CompanySearch = ({ search }) => {
         >
           <div
             className="form-group"
-            style={{ display: "flex", marginTop: "20px", width: "60%" }}
+            style={{ display: "flex", marginTop: "20px", width: "100%" }}
           >
             <input
-              style={{ padding: "10px", marginLeft: "5px" }}
+              style={{ padding: "10px", marginLeft: "5px", minWidth: "200px" }}
               className="form-control"
               id="name"
               type="text"

@@ -2,6 +2,13 @@
   .smallScreen {
     visibility: hidden;
   }
+  .dropMenu {
+    position: absolute;
+    left: -100px;
+    right: 0;
+    top: 55px;
+    width: fit-content;
+  }
 }
 @media screen and (max-width: 990px) {
   .bigScreen {
@@ -12,6 +19,29 @@
     display: flex;
     align-items: baseline;
   }
+
+  .dropMenu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 65px;
+    width: calc(100% - 7px);
+  }
+}
+
+.searchBTN {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  border-radius: 6px;
+  color: #3d3d3d;
+  background: #fff;
+  border: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 .titlePage {
@@ -51,11 +81,11 @@ a:hover {
   text-decoration: none;
 }
 
-.mouseOverIcon:hover {
+/* .mouseOverIcon:hover {
   text-decoration: none;
   font-size: 20px;
   transform: translate(-2px, -2px);
-}
+} */
 
 .titleIcon {
   color: #f36250;

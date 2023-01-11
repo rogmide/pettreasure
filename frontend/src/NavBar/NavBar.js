@@ -10,12 +10,31 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
+import SearchForm from "../CommunComponent/SearchForm";
+
 const SearchHeartIcons = () => {
   return (
     <div style={{ display: "flex" }}>
-      <NavLink className="nav-link   mouseOverIcon" to="/">
-        <FontAwesomeIcon style={{ color: "5c717a" }} icon={faSearch} />
-      </NavLink>
+      <div className="searchBTN dropdown dropdown-menu-lg-start">
+        <button
+          className="searchBTN"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="false"
+          aria-expanded="false"
+        >
+          <FontAwesomeIcon style={{ color: "5c717a" }} icon={faSearch} />
+        </button>
+        <div
+          className="dropdown-menu dropMenu"
+          aria-labelledby="dropdownMenuButton"
+        >
+          <div className="dropMenuItemHolder ">
+            <SearchForm />
+          </div>
+        </div>
+      </div>
       <NavLink className="nav-link  mouseOverIcon" to="/login">
         <FontAwesomeIcon style={{ color: "5c717a" }} icon={faHeart} />
       </NavLink>
@@ -134,14 +153,6 @@ const NavBar = () => {
       <div className="smallScreen" style={{ display: "flex" }}>
         {SearchHeartIcons()}
       </div>
-      {/* <div className="smallScreen" style={{ display: "flex" }}>
-        <NavLink className="nav-link   mouseOverIcon" to="/">
-          <FontAwesomeIcon style={{ color: "5c717a" }} icon={faSearch} />
-        </NavLink>
-        <NavLink className="nav-link  mouseOverIcon" to="/login">
-          <FontAwesomeIcon style={{ color: "5c717a" }} icon={faHeart} />
-        </NavLink>
-      </div> */}
 
       <button
         className="navbar-toggler"
