@@ -1,3 +1,19 @@
+@media screen and (min-width: 990px) {
+  .smallScreen {
+    visibility: hidden;
+  }
+}
+@media screen and (max-width: 990px) {
+  .bigScreen {
+    visibility: hidden;
+  }
+
+  .dropdown {
+    display: flex;
+    align-items: baseline;
+  }
+}
+
 .titlePage {
   font-weight: bolder;
   align-self: center;
@@ -18,6 +34,23 @@ a:hover {
   align-items: center;
 }
 
+.dropMenu {
+  border: 1px solid black;
+  padding: 8px;
+  box-shadow: #f36250 3px 3px 0 0, #f36250 3px 3px 0 2px;
+  transform: translate(2px, 2px);
+}
+
+.dropMenuItemHolder {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropMenuItem {
+  color: #5c717b;
+  text-decoration: none;
+}
+
 .mouseOverIcon:hover {
   text-decoration: none;
   font-size: 20px;
@@ -25,7 +58,7 @@ a:hover {
 }
 
 .titleIcon {
-  color: red;
+  color: #f36250;
   margin-right: 10px;
   font-size: 35px;
 }
@@ -84,10 +117,4 @@ a:hover {
 .nav-btn:not([disabled]):active {
   box-shadow: #183543 2px 2px 0 0, #183543 2px 2px 0 1px;
   transform: translate(2px, 2px);
-}
-
-@media (min-width: 768px) {
-  .nav-btn {
-    padding: 12px 50px;
-  }
 }
