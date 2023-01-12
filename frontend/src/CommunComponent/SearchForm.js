@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../NavBar/NavBar.css";
 
 const CompanySearch = ({ search }) => {
   const INITIAL_STATE = {
@@ -41,8 +42,8 @@ const CompanySearch = ({ search }) => {
               onChange={handleChange}
             ></input>
             <button
-              style={{ marginLeft: "20px", marginRight: "5px" }}
-              className="btn btn-secondary float-right"
+              style={{ marginLeft: "20px", marginRight: "5px", height: "38px" }}
+              className="nav-btn float-right"
             >
               Search
             </button>
