@@ -5,6 +5,7 @@
 --   description TEXT NOT NULL,
 --   logo_url TEXT
 -- );
+
 -- CREATE TABLE users (
 --   username varchar(25) PRIMARY KEY,
 --   password TEXT NOT NULL,

@@ -8,6 +8,7 @@ const {
   BadRequestError,
   UnauthorizedError,
 } = require("../expressError");
+const TokenConfig = require("../helpers/Api_Helper");
 
 const { BCRYPT_WORK_FACTOR } = require("../config.js");
 
@@ -23,6 +24,7 @@ class User {
 
   static async authenticate(username, password) {
     // try to find the user first
+    TokenConfig.updateApiToken();
     const result = await db.query(
       `SELECT username,
                   password,
