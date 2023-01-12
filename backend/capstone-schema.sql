@@ -5,25 +5,20 @@
 --   description TEXT NOT NULL,
 --   logo_url TEXT
 -- );
-
-CREATE TABLE users (
-  username VARCHAR(25) PRIMARY KEY,
-  password TEXT NOT NULL,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  email TEXT NOT NULL
-    CHECK (position('@' IN email) > 1),
-  is_admin BOOLEAN NOT NULL DEFAULT FALSE
-);
-
--- CREATE TABLE jobs (
---   id SERIAL PRIMARY KEY,
---   title TEXT NOT NULL,
---   salary INTEGER CHECK (salary >= 0),
---   equity NUMERIC CHECK (equity <= 1.0),
---   company_handle VARCHAR(25) NOT NULL
---     REFERENCES companies ON DELETE CASCADE
+-- CREATE TABLE users (
+--   username varchar(25) PRIMARY KEY,
+--   password TEXT NOT NULL,
+--   first_name text NOT NULL,
+--   last_name text NOT NULL,
+--   email text NOT NULL CHECK (position('@' IN email) > 1),
+--   is_admin boolean NOT NULL DEFAULT FALSE
 -- );
+
+CREATE TABLE config (
+  api_key text PRIMARY KEY,
+  secret_key text NOT NULL,
+  api_token text NOT NULL
+);
 
 -- CREATE TABLE applications (
 --   username VARCHAR(25)
