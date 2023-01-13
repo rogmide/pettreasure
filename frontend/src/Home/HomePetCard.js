@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import PetTreasureApi from "../API/Api";
 
 const HomePetCard = () => {
+  const [pet, setPet] = useState([]);
+
+  useEffect(function PreLoadInfo() {
+    async function getInitialPet() {
+      getRandPet();
+    }
+    getInitialPet();
+  }, []);
+
+  async function getRandPet() {
+    try {
+      console.log("Step1");
+      let pet = await PetTreasureApi.getRandomPet();
+    } catch (errors) {
+      console.log(errors);
+    }
+  }
   return (
     <>
       <div className="cardMain">

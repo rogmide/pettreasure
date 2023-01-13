@@ -1,7 +1,5 @@
 "use strict";
 
-/** Express app for jobly. */
-
 const express = require("express");
 const cors = require("cors");
 
@@ -12,6 +10,7 @@ const authRoutes = require("./routes/auth");
 const companiesRoutes = require("./routes/companies");
 const usersRoutes = require("./routes/users");
 const jobsRoutes = require("./routes/jobs");
+const petsRoutes = require("./routes/pets");
 
 const morgan = require("morgan");
 
@@ -26,7 +25,7 @@ app.use("/auth", authRoutes);
 app.use("/companies", companiesRoutes);
 app.use("/users", usersRoutes);
 app.use("/jobs", jobsRoutes);
-
+app.use("/pets", petsRoutes);
 
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
