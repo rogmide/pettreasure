@@ -31,7 +31,6 @@ class PetTreasureApi {
   /** Get pets */
 
   static async getRandomPet() {
-    console.log("Step2");
     let res = await this.request(`pets/random`);
     return res.pets;
   }

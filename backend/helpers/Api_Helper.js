@@ -15,7 +15,6 @@ class Api_Helper {
       "SELECT api_key, secret_key, api_token from config"
     );
     let { api_token } = token_data.rows[0];
-    console.log(api_token);
 
     const url = `${BASE_URL}${endpoint}`;
     const headers = { Authorization: `Bearer ${api_token}` };

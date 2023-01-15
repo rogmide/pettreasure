@@ -6,15 +6,20 @@ const { sqlForPartialUpdate } = require("../helpers/sql");
 const { api_request, updateApiToken } = require("../helpers/Api_Helper");
 
 class Pet {
-  static async getRandomPet() {
+  static async getRandomPet(limit = 1) {
     try {
-      const pets = await api_request("animals", { type: "cat", page: 2 });
-      console.log(pets);
+      const animals = ["dog", "cat", "bird"].sort(() => 0.5 - Math.random());
 
-      //   console.log(pets.status);
-      //   return pets;
+      const reps = await api_request("animals", {
+        type: animals[0],
+        page: Math.floor(Math.random() * 20),
+        sort: "random",
+        limit: limit,
+      });
+
+      return reps.animals[0];
     } catch (error) {
-      //   console.log(error);
+      console.log(error);
     }
   }
 }

@@ -12,8 +12,6 @@ const Pet = require("../models/pet");
 const router = express.Router({ mergeParams: true });
 
 router.get("/random", async function (req, res, next) {
-  const q = req.query;
-
   try {
     const pets = await Pet.getRandomPet();
     return res.json({ pets });

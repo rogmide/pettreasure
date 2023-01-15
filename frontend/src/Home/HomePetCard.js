@@ -13,8 +13,8 @@ const HomePetCard = () => {
 
   async function getRandPet() {
     try {
-      console.log("Step1");
       let pet = await PetTreasureApi.getRandomPet();
+      console.log(pet);
     } catch (errors) {
       console.log(errors);
     }
