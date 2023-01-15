@@ -12,7 +12,7 @@ class Pet {
 
       const reps = await api_request("animals", {
         type: animals[0],
-        page: Math.floor(Math.random() * 20),
+        page: Math.floor(Math.random() + 1 * 20),
         sort: "random",
         limit: limit,
       });
