@@ -1,0 +1,73 @@
+.buttonRefresh {
+  display: flex;
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  /* background-color: black; */
+  z-index: 0;
+  top: 60%;
+  left: -20%;
+}
+.buttonRefresh button {
+  background-color: white;
+  width: 120px;
+  height: 40px;
+  box-shadow: none;
+}
+
+.topRightIcon {
+  display: flex;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  z-index: 0;
+  border-radius: 50%;
+  top: -11%;
+  right: -21%;
+  clip-path: polygon(
+    89% 19%,
+    69% 45%,
+    89% 83%,
+    59% 64%,
+    23% 96%,
+    35% 56%,
+    10% 39%,
+    36% 36%,
+    40% 5%,
+    56% 29%
+  );
+}
+
+.topRightIcon2 {
+  display: flex;
+  position: absolute;
+  width: 144px;
+  height: 142px;
+  background-color: white;
+  z-index: 0;
+  border-radius: 50%;
+  top: -10%;
+  right: -20%;
+  clip-path: polygon(
+    89% 19%,
+    69% 45%,
+    89% 83%,
+    59% 64%,
+    23% 96%,
+    35% 56%,
+    10% 39%,
+    36% 36%,
+    40% 5%,
+    56% 29%
+  );
+}
+
+.centerIcon {
+  color: #f36250;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  font-size: 36px;
+  display: flex;
+  margin-top: 48px;
+  margin-left: 56px;
+}
