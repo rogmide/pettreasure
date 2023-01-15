@@ -21,7 +21,6 @@
   font-size: 45px;
   margin-bottom: 30px;
   width: 75%;
-  
 }
 
 .headerContainer p {
@@ -49,7 +48,7 @@
   z-index: -1;
   left: 20px;
   top: 20px;
-  border: 2px solid black;
+  border: 3px solid black;
 }
 
 .imgHolder {
@@ -57,17 +56,29 @@
   width: 300px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
 }
+/* 
+.cardHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+
+.cardHolder img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+} */
 
 .cardHolder {
   height: 410px;
   width: fit-content;
-  border: 2px solid black;
+  border: 3px solid black;
   border-radius: 5px;
   background-color: white;
 }
-
 .petData {
   display: flex;
   justify-content: space-between;
