@@ -17,17 +17,22 @@ class Api_Helper {
     let { api_token } = token_data.rows[0];
     console.log(api_token);
 
-    const url = `${BASE_URL}/${endpoint}`;
+    const url = `${BASE_URL}${endpoint}`;
     const headers = { Authorization: `Bearer ${api_token}` };
     const params = method === "get" ? data : {};
-    // const params = { type: "cat", page: 2 };
 
     try {
-      return (await axios({ url, method, params, headers })).data;
+      if (method === "post") {
+        return (await axios({ url, method, params, data, headers })).data;
+      } else {
+        return (await axios({ url, method, params, headers })).data;
+      }
     } catch (err) {
       console.error("API Error:", err.response);
-      console.log(err.response.status);
       if (err.response.status === 403) {
+        await Api_Helper.updateApiToken();
+      }
+      if (err.response.status === 401) {
         await Api_Helper.updateApiToken();
       }
       let message = err.response.data.error.message;
@@ -49,8 +54,6 @@ class Api_Helper {
     // Getting current information,{ api_key, secret_key } from DataBase
     // To be use to get a new Api token
 
-    console.log("######### ENTRO UPDATED API TOKEN##########");
-
     const configData = await db.query(
       "SELECT api_key, secret_key, api_token from config"
     );
@@ -69,14 +72,10 @@ class Api_Helper {
         api_token_call_data,
         "post"
       );
-      // console.log(data.access_token);
+
       const result = await db.query(
         `UPDATE config set api_token = '${data.access_token}' RETURNING api_token`
       );
-
-      // Getting to token that the Api_request is going to work!
-      // CURRENT_TOKEN = result.rows[0].api_token;
-      // console.log(CURRENT_TOKEN);
     } catch (error) {
       console.log(error);
     }
