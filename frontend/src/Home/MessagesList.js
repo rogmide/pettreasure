@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./MessagesList.css";
 import MessagesCard from "./MessagesCard";
 
@@ -66,11 +66,20 @@ const MessagesList = () => {
           role="button"
           data-slide="prev"
         >
-          <span
+          {/* <span
             className="carousel-control-prev-icon"
             aria-hidden="true"
-          ></span>
-          <span className="sr-only">Previous</span>
+          ></span> */}
+          {/* <span className="sr-only">Previous</span> */}
+          <span className="arrowIcon1">
+            <FontAwesomeIcon
+              className="arrowIcon1"
+              style={{
+                fontSize: "40px",
+              }}
+              icon={faArrowLeft}
+            />
+          </span>
         </a>
         <a
           className="carousel-control-next"
@@ -78,11 +87,19 @@ const MessagesList = () => {
           role="button"
           data-slide="next"
         >
-          <span
+          {/* <span 
             className="carousel-control-next-icon"
             aria-hidden="true"
-          ></span>
-          <span className="sr-only">Next</span>
+          ></span> */}
+          {/* <span className="sr-only">Next</span> */}
+          <span className="arrowIcon1">
+            <FontAwesomeIcon
+              style={{
+                fontSize: "40px",
+              }}
+              icon={faArrowRight}
+            />
+          </span>
         </a>
       </div>
     </>
