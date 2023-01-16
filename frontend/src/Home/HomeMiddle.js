@@ -12,16 +12,20 @@ const HomeMiddle = () => {
   return (
     <>
       <div className="mainContainer">
-        <div className="title">
+        <div className="container title">
           <h1>FIND YOUR NEW BEST FRIEND</h1>
           <p>
             Browse pets from our network of over 11,500 shelters and rescues.
           </p>
           <div className="iconHolders">
-            <MiddleIcon type={faDog} linkTo="/dog" />
-            <MiddleIcon type={faCat} linkTo="/dog" />
-            <MiddleIcon type={faHippo} linkTo="/dog" />
-            <MiddleIcon type={faCampground} linkTo="/dog" />
+            <MiddleIcon type={faDog} linkTo="/dogs" animal="Dogs" />
+            <MiddleIcon type={faCat} linkTo="/cats" animal="Cats" />
+            <MiddleIcon type={faHippo} linkTo="/others" animal="Others" />
+            <MiddleIcon
+              type={faCampground}
+              linkTo="/shelters"
+              animal="Shelters and Rescue"
+            />
           </div>
         </div>
       </div>
