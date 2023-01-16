@@ -50,7 +50,7 @@ const HomePetCard = () => {
         </div>
         <div className="backGroundCard"></div>
         <div className="cardHolder">
-          {pet && pet.primary_photo_cropped.full ? (
+          {pet && pet.primary_photo_cropped ? (
             <img
               className="imgHolder"
               src={

@@ -18,24 +18,24 @@
 
 .titlePetAdoption {
   background-color: #f36250;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .iconHolder1 {
-  font-size: 120px;
+  font-size: 220px;
   color: #f36250;
 }
 
 .findMore {
   display: flex;
   flex-direction: column;
-  width: 180px;
+  width: 280px;
   align-items: center;
 }
 
 .petData1 {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
 
 .cardMain1:hover .backGroundCard1 {
@@ -99,4 +99,13 @@
 
 .available-btn:hover {
   transform: translateY(-1px);
+}
+
+.linkHolder1 {
+  font-weight: bolder;
+}
+
+.linkHolder1:hover {
+  font-weight: bolder;
+  text-decoration: none;
 }

@@ -16,7 +16,7 @@ const PetAviable = () => {
     getInitialPet();
   }, []);
 
-  async function getRandPet(limit = 4, type = "NoType") {
+  async function getRandPet(limit = 5, type = "NoType") {
     try {
       let resp = await PetTreasureApi.getRandomPet(limit, type);
       setPets(resp);
@@ -56,25 +56,25 @@ const PetAviable = () => {
           >
             <button
               className="nav-btn available-btn"
-              onClick={() => getRandPet(4, "cat")}
+              onClick={() => getRandPet(5, "cat")}
             >
               Cats
             </button>
             <button
               className="nav-btn available-btn"
-              onClick={() => getRandPet(4, "dog")}
+              onClick={() => getRandPet(5, "dog")}
             >
               Dogs
             </button>
             <button
               className="nav-btn available-btn"
-              onClick={() => getRandPet(4, "rabbit")}
+              onClick={() => getRandPet(5, "rabbit")}
             >
               Rabbits
             </button>
             <button
               className="nav-btn available-btn"
-              onClick={() => getRandPet(4, "bird")}
+              onClick={() => getRandPet(5, "bird")}
             >
               Birds
             </button>
@@ -93,7 +93,7 @@ const PetAviable = () => {
                 <FontAwesomeIcon className="iconHolder1" icon={faPaw} />
                 <div
                   className="petData1"
-                  style={{ display: "flex", justifyContent: "center" }}
+                  style={{ display: "flex", justifyContent: "space-evenly" }}
                 >
                   <p
                     style={{
@@ -102,7 +102,7 @@ const PetAviable = () => {
                       marginBottom: "30px",
                     }}
                   >
-                    6000+ pets available on{" "}
+                    6000+ more pets available on{" "}
                     <span style={{ color: "darkred" }}>Pet</span>Treasure{" "}
                   </p>
                 </div>
@@ -123,6 +123,19 @@ const PetAviable = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            marginBlock: "40px",
+          }}
+        >
+          <Link className="linkHolder1" to="gallery">
+            {" "}
+            See More...{" "}
+          </Link>
         </div>
       </div>
     </>
