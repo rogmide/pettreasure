@@ -24,6 +24,7 @@
 
 .iconHolder1 {
   font-size: 120px;
+  color: #f36250;
 }
 
 .findMore {
@@ -35,4 +36,24 @@
 
 .petData1 {
   border-bottom: 2px solid black;
+}
+
+.cardMain1:hover .backGroundCard1 {
+  background-color: #1c3238;
+}
+.cardMain1:hover .findMore {
+  background-color: #f36250;
+  height: 100%;
+  border-radius: 2px;
+}
+.cardMain1:hover .iconHolder1 {
+  color: white;
+}
+
+.cardMain1:hover .searchIcon {
+  color: white !important;
+}
+
+.cardMain1:hover p {
+  color: white !important;
 }

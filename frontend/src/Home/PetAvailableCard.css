@@ -61,3 +61,10 @@ p {
   border-radius: 5px;
   background-color: white;
 }
+
+.linkHolder:hover .backGroundCard1 {
+  background-color: #1c3238;
+}
+.linkHolder:hover .cardHolder1 {
+  background-color: #f36250;
+}
