@@ -1,18 +1,20 @@
 .buttonRefresh {
   display: flex;
   position: absolute;
-  width: 200px;
-  height: 80px;
+  width: 40px;
+  height: 50px;
   /* background-color: black; */
   z-index: 0;
-  top: 60%;
-  left: -20%;
+  top: 76%;
+  left: 0%;
 }
 .buttonRefresh button {
   background-color: white;
-  width: 120px;
+  width: 20px;
   height: 40px;
   box-shadow: none;
+  border: 2px solid black;
+  padding: 12px 20px;
 }
 
 .topRightIcon {
