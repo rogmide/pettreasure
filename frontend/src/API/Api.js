@@ -30,8 +30,8 @@ class PetTreasureApi {
 
   /** Get pets */
 
-  static async getRandomPet(limit) {
-    let res = await this.request(`pets/random`, { limit: limit });
+  static async getRandomPet(limit, type) {
+    let res = await this.request(`pets/random`, { limit: limit, type: type });
     return res.pets;
   }
 

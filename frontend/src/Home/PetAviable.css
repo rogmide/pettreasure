@@ -1,0 +1,19 @@
+.petHolder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.petAvailable {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid black;
+}
+
+.titlePetAdoption {
+  background-color: #f36250;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
