@@ -5,6 +5,7 @@ import HomeHeader from "./HomeHeader";
 import HomePetCard from "./HomePetCard";
 import HomeMiddle from "./HomeMiddle";
 import PetAviable from "./PetAvailable";
+import MessagesList from "./MessagesList";
 import "../NavBar/NavBar.css";
 
 const Home = () => {
@@ -25,6 +26,9 @@ const Home = () => {
       </div>
       <div>
         <PetAviable />
+      </div>
+      <div>
+        <MessagesList />
       </div>
     </>
   );

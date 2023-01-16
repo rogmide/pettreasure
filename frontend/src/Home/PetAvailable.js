@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PetTreasureApi from "../API/Api";
 import PetAvailableCard from "./PetAvailableCard";
-import "./PetAviable.css";
+import "./PetAvailable.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

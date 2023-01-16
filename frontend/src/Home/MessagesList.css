@@ -1,0 +1,12 @@
+.imgLeft {
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.carousellHolder {
+  background-color: #f36250;
+  background-size: 50%;
+  height: 100%;
+  
+}
