@@ -9,7 +9,7 @@ const PetAvailableCard = ({ pet, linkTo }) => {
         <div className="cardMain">
           <div className="backGroundCard1"></div>
           <div className="cardHolder1">
-            {pet && pet.primary_photo_cropped.full ? (
+            {pet && pet.primary_photo_cropped ? (
               <img
                 className="imgHolder1"
                 src={

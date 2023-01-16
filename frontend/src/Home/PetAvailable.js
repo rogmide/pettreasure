@@ -16,9 +16,9 @@ const PetAviable = () => {
     getInitialPet();
   }, []);
 
-  async function getRandPet() {
+  async function getRandPet(limit = 4, type = "NoType") {
     try {
-      let resp = await PetTreasureApi.getRandomPet(4, "NoType");
+      let resp = await PetTreasureApi.getRandomPet(limit, type);
       setPets(resp);
     } catch (errors) {
       console.log(errors);
@@ -38,6 +38,48 @@ const PetAviable = () => {
             • Pet Available for Adoption •
           </h3>
         </div>
+        <div>
+          {" "}
+          <h3
+            style={{
+              fontSize: "xx-large",
+              textAlign: "center",
+              marginTop: "80px",
+              marginBlock: "40px",
+            }}
+          >
+            Our best collection
+          </h3>
+          <div
+            className="buttonHolder"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <button
+              className="nav-btn available-btn"
+              onClick={() => getRandPet(4, "cat")}
+            >
+              Cats
+            </button>
+            <button
+              className="nav-btn available-btn"
+              onClick={() => getRandPet(4, "dog")}
+            >
+              Dogs
+            </button>
+            <button
+              className="nav-btn available-btn"
+              onClick={() => getRandPet(4, "rabbit")}
+            >
+              Rabbits
+            </button>
+            <button
+              className="nav-btn available-btn"
+              onClick={() => getRandPet(4, "bird")}
+            >
+              Birds
+            </button>
+          </div>
+        </div>
         <div className="petHolder">
           {pets
             ? pets.map((p) => (
@@ -48,10 +90,7 @@ const PetAviable = () => {
             <div className="backGroundCard1"></div>
             <div className="cardHolder1">
               <div className="findMore">
-                <FontAwesomeIcon
-                  className="iconHolder1"
-                  icon={faPaw}
-                />
+                <FontAwesomeIcon className="iconHolder1" icon={faPaw} />
                 <div
                   className="petData1"
                   style={{ display: "flex", justifyContent: "center" }}
