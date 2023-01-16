@@ -7,6 +7,7 @@ const { api_request, updateApiToken } = require("../helpers/Api_Helper");
 
 class Pet {
   static async getRandomPet(limit = 1) {
+    console.log(limit)
     try {
       const animals = ["dog", "cat", "bird"].sort(() => 0.5 - Math.random());
 
@@ -17,7 +18,7 @@ class Pet {
         limit: limit,
       });
 
-      return reps.animals[0];
+      return reps.animals;
     } catch (error) {
       console.log(error);
     }

@@ -12,7 +12,6 @@ const HomePetCard = () => {
 
   useEffect(function PreLoadInfo() {
     async function getInitialPet() {
-      console.log(pet);
       getRandPet();
     }
     getInitialPet();
@@ -21,7 +20,7 @@ const HomePetCard = () => {
   async function getRandPet() {
     try {
       let resp = await PetTreasureApi.getRandomPet();
-      setPet(resp);
+      setPet(resp[0]);
     } catch (errors) {
       console.log(errors);
     }
