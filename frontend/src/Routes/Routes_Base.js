@@ -9,6 +9,7 @@ import UserContext from "../UseContext";
 import AboutUs from "../AboutUs/AboutUs";
 import Organizations from "../Organizations/OrganizationsList";
 import Gallery from "../Gallery/Gallery";
+import Footer from "../Footer/Footer";
 import "./Routes_Base.css";
 
 function Routes_Base({ login, signup }) {
@@ -54,6 +55,7 @@ function Routes_Base({ login, signup }) {
 
           <Route path="*" element={<Navigate exact="true" to="/" />}></Route>
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
