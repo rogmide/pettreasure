@@ -22,7 +22,7 @@ const MiddleIcon = ({ type, linkTo, animal }) => {
             style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "30px",
+              marginTop: "10px",
             }}
           >
             <p>{animal}</p>
