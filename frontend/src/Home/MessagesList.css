@@ -1,5 +1,6 @@
 .imgLeft {
-  height: 300px;
+  height: 250px;
+  width: 240px;
   border: 1px solid black;
   border-radius: 10px;
 }
@@ -8,5 +9,15 @@
   background-color: #f36250;
   background-size: 50%;
   height: 100%;
-  
 }
+
+.messageHolder {
+  border: 2px solid black;
+  padding: 30px;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  box-shadow: rgba(10, 19, 21, 0.9) 5px 5px;
+  background-color: white;
+}
+
+
