@@ -11,6 +11,13 @@ import {
 const HomeMiddle = () => {
   return (
     <>
+      <div
+        style={{
+          borderTop: "2px solid black",
+          marginTop: "40px",
+          marginBottom: "40px",
+        }}
+      ></div>
       <div className="mainContainer">
         <div className="container title">
           <h1>FIND YOUR NEW BEST FRIEND</h1>
@@ -29,6 +36,13 @@ const HomeMiddle = () => {
           </div>
         </div>
       </div>
+      {/* <div
+        style={{
+          borderTop: "2px solid black",
+          marginBottom: "40px",
+          marginTop: "70px",
+        }}
+      ></div> */}
     </>
   );
 };
