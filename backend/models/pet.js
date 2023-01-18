@@ -26,7 +26,7 @@ class Pet {
       const reps = await api_request("animals", {
         type: animals === "NoType" ? "" : animals,
         page: Math.floor(Math.random() * 20 + 1),
-        sort: "distance",
+        sort: "random",
         limit: limit,
       });
 

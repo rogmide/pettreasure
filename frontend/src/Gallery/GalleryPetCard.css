@@ -45,3 +45,8 @@ p {
 /* .linkHolder:hover .cardHolder1 {
     background-color: #f36250;
   } */
+
+.petName {
+  font-size: 18px;
+  margin-bottom: 0px;
+}

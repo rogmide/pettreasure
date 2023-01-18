@@ -32,11 +32,21 @@ const GalleryPetCard = ({ pet, linkTo }) => {
 
             <div
               className="petData"
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
+              }}
             >
-              <p style={{ fontWeight: "bolder" }}>
+              <p className="petName" style={{ fontWeight: "bolder" }}>
                 {pet ? pet.name.slice(0, 10) : "Loading..."}
               </p>
+              <div>
+                <p style={{ maxWidth: "200px" }}>
+                  {pet ? pet.age : "Loading..."} :{" "}
+                  {pet ? pet.breeds.primary : "Loading..."}
+                </p>
+              </div>
             </div>
           </div>
         </div>
