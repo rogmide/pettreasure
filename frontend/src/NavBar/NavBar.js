@@ -14,34 +14,36 @@ import SearchForm from "../CommunComponent/SearchForm";
 
 const SearchHeartIcons = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <div className="searchBTN dropdown dropdown-menu-lg-start">
-        <button
-          className="searchBTN"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="false"
-          aria-expanded="false"
-        >
-          <FontAwesomeIcon style={{ color: "5c717a" }} icon={faSearch} />
-        </button>
-        <div
-          className="dropdown-menu dropMenu"
-          aria-labelledby="dropdownMenuButton"
-        >
-          <div className="dropMenuItemHolder ">
-            <SearchForm />
+    <>
+      <div style={{ display: "flex" }}>
+        <div className="searchBTN dropdown dropdown-menu-lg-start">
+          <button
+            className="searchBTN"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="false"
+            aria-expanded="false"
+          >
+            <FontAwesomeIcon style={{ color: "5c717a" }} icon={faSearch} />
+          </button>
+          <div
+            className="dropdown-menu dropMenu"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <div className="dropMenuItemHolder ">
+              <SearchForm />
+            </div>
           </div>
         </div>
+        <NavLink className="nav-link mouseOverIcon" to="/login">
+          <FontAwesomeIcon
+            style={{ color: "5c717a", fontSize: "18px" }}
+            icon={faHeart}
+          />
+        </NavLink>
       </div>
-      <NavLink className="nav-link mouseOverIcon" to="/login">
-        <FontAwesomeIcon
-          style={{ color: "5c717a", fontSize: "18px" }}
-          icon={faHeart}
-        />
-      </NavLink>
-    </div>
+    </>
   );
 };
 
@@ -150,9 +152,14 @@ const middleMenu = () => {
         </NavLink>
       </li>
       <li className="nav-item mr-4">
-        <NavLink className="nav-link" to="/gallery">
+        <button
+          className="nav-link btn-gallery"
+          to="/gallery"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        >
           Gallery
-        </NavLink>
+        </button>
       </li>
     </ul>
   );

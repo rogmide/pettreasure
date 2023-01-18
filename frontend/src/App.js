@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import PetTreasureApi from "./API/Api";
 import UserContext from "./UseContext";
 import useLocalStore from "./CommunComponent/useLocalStore";
+import PetTypeModal from "./Modals/PetTypeModal";
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ currUser, logout, setCurrUser }}>
+      <PetTypeModal />
       <Routes_Base login={login} signup={signup} />
     </UserContext.Provider>
   );
