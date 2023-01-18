@@ -1,0 +1,7 @@
+.modalContainer {
+  border: 2px solid black;
+  /* box-shadow: #f36250 5px 5px;
+   */
+  box-shadow: #f36250 -10px 10px, black -12px 12px;
+  
+}

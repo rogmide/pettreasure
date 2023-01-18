@@ -86,40 +86,47 @@ const PetAviable = () => {
                 <PetAvailableCard key={p.id} pet={p} linkTo={`pet/${p.id}`} />
               ))
             : ""}
-          <div className="cardMain1">
-            <div className="backGroundCard1"></div>
-            <div className="cardHolder1">
-              <div className="findMore">
-                <FontAwesomeIcon className="iconHolder1" icon={faPaw} />
-                <div
-                  className="petData1"
-                  style={{ display: "flex", justifyContent: "space-evenly" }}
-                >
-                  <p
-                    style={{
-                      fontSize: "16.9px",
-                      textAlign: "center",
-                      marginBottom: "30px",
-                    }}
+          <div
+            className="toggler"
+            style={{ cursor: "pointer" }}
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            <div className="cardMain1">
+              <div className="backGroundCard1"></div>
+              <div className="cardHolder1">
+                <div className="findMore">
+                  <FontAwesomeIcon className="iconHolder1" icon={faPaw} />
+                  <div
+                    className="petData1"
+                    style={{ display: "flex", justifyContent: "space-evenly" }}
                   >
-                    6000+ more pets available on{" "}
-                    <span style={{ color: "darkred" }}>Pet</span>Treasure{" "}
-                  </p>
-                </div>
+                    <p
+                      style={{
+                        fontSize: "16.9px",
+                        textAlign: "center",
+                        marginBottom: "30px",
+                      }}
+                    >
+                      6000+ more pets available on{" "}
+                      <span style={{ color: "darkred" }}>Pet</span>Treasure{" "}
+                    </p>
+                  </div>
 
-                <span className="titlePage">
-                  {" "}
-                  <p
-                    style={{
-                      fontSize: "16.9px",
-                      textAlign: "center",
-                      marginTop: "10px",
-                    }}
-                  >
+                  <span className="titlePage">
                     {" "}
-                    MEET THEM{" "}
-                  </p>
-                </span>
+                    <p
+                      style={{
+                        fontSize: "16.9px",
+                        textAlign: "center",
+                        marginTop: "10px",
+                      }}
+                    >
+                      {" "}
+                      MEET THEM{" "}
+                    </p>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

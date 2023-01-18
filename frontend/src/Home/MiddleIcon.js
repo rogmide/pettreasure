@@ -10,7 +10,7 @@ const MiddleIcon = ({ type, linkTo, animal }) => {
       {" "}
       <Link className="linkHolder" to={linkTo}>
         <div className="iconHolder">
-          <div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             {/* <FontAwesomeIcon icon="fa-regular fa-dog" /> */}
             <FontAwesomeIcon
               className="searchIcon"
@@ -25,7 +25,7 @@ const MiddleIcon = ({ type, linkTo, animal }) => {
               marginTop: "10px",
             }}
           >
-            <p>{animal}</p>
+            <p style={{ marginTop: "15px" }}>{animal}</p>
           </div>
         </div>
       </Link>

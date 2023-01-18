@@ -56,7 +56,6 @@ function App() {
 
   return (
     <UserContext.Provider value={{ currUser, logout, setCurrUser }}>
-      <PetTypeModal />
       <Routes_Base login={login} signup={signup} />
     </UserContext.Provider>
   );

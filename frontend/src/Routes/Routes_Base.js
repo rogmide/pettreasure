@@ -10,6 +10,7 @@ import AboutUs from "../AboutUs/AboutUs";
 import Organizations from "../Organizations/OrganizationsList";
 import Gallery from "../Gallery/Gallery";
 import Footer from "../Footer/Footer";
+import PetTypeModal from "../Modals/PetTypeModal";
 import "./Routes_Base.css";
 
 function Routes_Base({ login, signup }) {
@@ -28,6 +29,7 @@ function Routes_Base({ login, signup }) {
 
   return (
     <BrowserRouter>
+      <PetTypeModal />
       <NavBar />
       <div className="container MainContent">
         <Routes>
