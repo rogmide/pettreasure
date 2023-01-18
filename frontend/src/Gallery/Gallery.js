@@ -1,9 +1,10 @@
 import React from "react";
+import PetList from "./PetList";
 
-const Gallery = () => {
+const Gallery = ({ currType }) => {
   return (
     <>
-      <div>!!! This is For Gallery !!!</div>
+      <PetList currType={currType} />
     </>
   );
 };

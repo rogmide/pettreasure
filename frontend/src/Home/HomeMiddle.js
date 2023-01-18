@@ -25,9 +25,13 @@ const HomeMiddle = () => {
             Browse pets from our network of over 11,500 shelters and rescues.
           </p>
           <div className="iconHolders">
-            <MiddleIcon type={faDog} linkTo="/dogs" animal="Dogs" />
-            <MiddleIcon type={faCat} linkTo="/cats" animal="Cats" />
-            <MiddleIcon type={faHippo} linkTo="/others" animal="Others" />
+            <MiddleIcon type={faDog} linkTo="/gallery/dogs" animal="Dogs" />
+            <MiddleIcon type={faCat} linkTo="/gallery/cats" animal="Cats" />
+            <MiddleIcon
+              type={faHippo}
+              linkTo="/gallery/others"
+              animal="Others"
+            />
             <MiddleIcon
               type={faCampground}
               linkTo="/shelters"

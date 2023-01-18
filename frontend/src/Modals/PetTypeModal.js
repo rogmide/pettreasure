@@ -45,12 +45,24 @@ const PetTypeModal = () => {
               </div>
               <div style={{ display: "flex" }}>
                 <div style={{ marginRight: "10px" }}>
-                  <MiddleIcon type={faDog} linkTo="/dogs" animal="Dogs" />
+                  <MiddleIcon
+                    type={faDog}
+                    linkTo="/gallery/dogs"
+                    animal="Dogs"
+                  />
                 </div>
                 <div style={{ marginRight: "10px" }}>
-                  <MiddleIcon type={faCat} linkTo="/cats" animal="Cats" />
+                  <MiddleIcon
+                    type={faCat}
+                    linkTo="/gallery/cats"
+                    animal="Cats"
+                  />
                 </div>
-                <MiddleIcon type={faHippo} linkTo="/others" animal="Others" />
+                <MiddleIcon
+                  type={faHippo}
+                  linkTo="/gallery/others"
+                  animal="Others"
+                />
               </div>
             </div>
             <div className="modal-footer">

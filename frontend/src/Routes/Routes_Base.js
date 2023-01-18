@@ -51,6 +51,21 @@ function Routes_Base({ login, signup }) {
             element={<Organizations />}
           ></Route>
           <Route exact path="/gallery" element={<Gallery />}></Route>
+          <Route
+            exact
+            path="/gallery/dogs"
+            element={<Gallery currType="dog" />}
+          ></Route>
+          <Route
+            exact
+            path="/gallery/cats"
+            element={<Gallery currType="cat" />}
+          ></Route>
+          <Route
+            exact
+            path="/gallery/others"
+            element={<Gallery currType="others" />}
+          ></Route>
 
           {/* Ensuring that the user is login to access this routes */}
           {SecureRoute("/profile", <UserProfile />)}
