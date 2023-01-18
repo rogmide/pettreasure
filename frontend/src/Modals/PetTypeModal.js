@@ -26,7 +26,7 @@ const PetTypeModal = () => {
           >
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLongTitle">
-                Select a destination
+                Let's get this right...
               </h5>
               <button
                 type="button"
@@ -38,6 +38,11 @@ const PetTypeModal = () => {
               </button>
             </div>
             <div className="modal-body">
+              <div>
+                <p style={{ textAlign: "center" }}>
+                  What kind of pet are you looking for?
+                </p>
+              </div>
               <div style={{ display: "flex" }}>
                 <div style={{ marginRight: "10px" }}>
                   <MiddleIcon type={faDog} linkTo="/dogs" animal="Dogs" />
@@ -49,11 +54,7 @@ const PetTypeModal = () => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary nav-btn"
-                data-dismiss="modal"
-              >
+              <button type="button" className="nav-btn" data-dismiss="modal">
                 Close
               </button>
               {/* <button type="button" className="btn btn-primary">

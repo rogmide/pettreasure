@@ -15,7 +15,13 @@ const HomeHeader = () => {
         <div
           style={{ display: "flex", marginTop: "20px", alignItems: "center" }}
         >
-          <button className="nav-btn">Explore Now</button>
+          <button
+            className="nav-btn"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            Explore Now
+          </button>
           <div style={{ marginLeft: "40px" }}>
             <h1
               style={{
