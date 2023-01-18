@@ -4,7 +4,7 @@ import UserContext from "../UseContext";
 import HomeHeader from "./HomeHeader";
 import HomePetCard from "./HomePetCard";
 import HomeMiddle from "./HomeMiddle";
-import PetAviable from "./PetAvailable";
+import PetAviable from "../Pet/PetAvailable";
 import MessagesList from "./MessagesList";
 import "../NavBar/NavBar.css";
 
