@@ -35,6 +35,35 @@ class Pet {
       console.log(error);
     }
   }
+
+  static async getPetGallery(
+    limit = 20,
+    animals = "dog",
+    page,
+    location = null
+  ) {
+    try {
+      if (location) {
+        const reps = await api_request("animals", {
+          type: animals,
+          page: page,
+          limit: limit,
+          sort: "distance",
+          location: location,
+        });
+        return reps.animals;
+      } else {
+        const reps = await api_request("animals", {
+          type: animals,
+          page: page,
+          limit: limit,
+        });
+        return reps.animals;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = Pet;

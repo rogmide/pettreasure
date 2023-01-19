@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const PetList = ({ currType }) => {
   const [pets, setPets] = useState();
+  const [pageCount, setPageCount] = useState(1);
 
   useEffect(
     function PreLoadInfo() {
@@ -18,7 +19,11 @@ const PetList = ({ currType }) => {
 
   async function getRandPet(limit = 20, type = currType) {
     try {
-      let resp = await PetTreasureApi.getRandomPet(limit, type);
+      // HERE HAD TO WORK WITH LOCATION USER LOCATION
+      // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
+      // NEED TO STAR WORKING ON THAT ASAP
+      let resp = await PetTreasureApi.getPets(limit, type, pageCount, "33511");
+      setPageCount(pageCount + 1);
       setPets(resp);
     } catch (errors) {
       console.log(errors);

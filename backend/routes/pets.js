@@ -21,4 +21,14 @@ router.get("/random", async function (req, res, next) {
   }
 });
 
+router.get("/gallery", async function (req, res, next) {
+  const { limit, type, page, location } = req.query;
+  try {
+    const pets = await Pet.getPetGallery(limit, type, page, location);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

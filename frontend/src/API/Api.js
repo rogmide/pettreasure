@@ -35,6 +35,17 @@ class PetTreasureApi {
     return res.pets;
   }
 
+  static async getPets(limit, type, page, location) {
+    console.log(limit, type, page, location);
+    let res = await this.request(`pets/gallery`, {
+      limit: limit,
+      type: type,
+      page: page,
+      location: location,
+    });
+    return res.pets;
+  }
+
   //######################################################################
   // End Pets Section
   //######################################################################

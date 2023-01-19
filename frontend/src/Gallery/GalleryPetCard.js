@@ -42,9 +42,12 @@ const GalleryPetCard = ({ pet, linkTo }) => {
                 {pet ? pet.name.slice(0, 10) : "Loading..."}
               </p>
               <div>
-                <p style={{ maxWidth: "200px" }}>
-                  {pet ? pet.age : "Loading..."} :{" "}
+                <p className="petData2" style={{ maxWidth: "200px" }}>
+                  {pet ? pet.age : "Loading..."} •{" "}
                   {pet ? pet.breeds.primary : "Loading..."}
+                  <p>
+                    {pet.distance ? `${Math.floor(pet.distance)} miles` : ""}
+                  </p>
                 </p>
               </div>
             </div>
