@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PetTreasureApi from "../API/Api";
 import GalleryPetCard from "./GalleryPetCard";
-import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const PetList = ({ currType }) => {
   const [pets, setPets] = useState();
@@ -10,20 +10,22 @@ const PetList = ({ currType }) => {
   useEffect(
     function PreLoadInfo() {
       async function getInitialPet() {
-        getRandPet();
+        getPets();
       }
       getInitialPet();
     },
+
     [currType]
   );
 
-  async function getRandPet(limit = 20, type = currType) {
+  async function getPets(limit = 20, type = currType) {
     try {
       // HERE HAD TO WORK WITH LOCATION USER LOCATION
       // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
       // NEED TO STAR WORKING ON THAT ASAP
-      let resp = await PetTreasureApi.getPets(limit, type, pageCount, "33511");
-      setPageCount(pageCount + 1);
+
+      let resp = await PetTreasureApi.getPets(limit, type, 1, "33511");
+      setPageCount(1);
       setPets(resp);
     } catch (errors) {
       console.log(errors);
@@ -35,14 +37,14 @@ const PetList = ({ currType }) => {
       // HERE HAD TO WORK WITH LOCATION USER LOCATION
       // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
       // NEED TO STAR WORKING ON THAT ASAP
-      let resp = await PetTreasureApi.getPets(limit, type, pageCount, "33511");
+      let resp = await PetTreasureApi.getPets(
+        limit,
+        type,
+        pageCount + 1,
+        "33511"
+      );
       setPageCount(pageCount + 1);
-      console.log(resp);
-      //   (snacks) => [...snacks, { ...newItem, id: newItem.name }]
-      let temp = pets.push(resp);
-      console.log(temp);
-      //   setPets((pets) => [...pets, { resp }]);
-      //   pets.push(resp);
+      setPets([...pets, ...resp]);
     } catch (errors) {
       console.log(errors);
     }
@@ -54,7 +56,7 @@ const PetList = ({ currType }) => {
         <div className="petHolder">
           {pets
             ? pets.map((p) => (
-                <GalleryPetCard key={p.id} pet={p} linkTo={`pet/${p.id}`} />
+                <GalleryPetCard key={uuidv4()} pet={p} linkTo={`pet/${p.id}`} />
               ))
             : ""}
         </div>
