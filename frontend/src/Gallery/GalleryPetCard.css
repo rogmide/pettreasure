@@ -39,7 +39,7 @@ p {
   height: fit-content;
 }
 
-.cardHolder2:hover .backGroundCard1 {
+.cardHolder2:hover .backGroundCard2 {
   background-color: #f36250;
   visibility: visible;
 }
