@@ -163,3 +163,13 @@ a:hover {
   color: #5c717a !important;
   cursor: pointer;
 }
+.btn-gallery1 {
+  border: none;
+  background-color: white;
+  color: #5c717b;
+  margin-top: 2px;
+}
+
+.btn-gallery1:hover {
+  color: #4d717b !important;
+}

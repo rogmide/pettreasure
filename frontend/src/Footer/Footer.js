@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import UserContext from "../UseContext";
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -82,13 +81,15 @@ const middleMenu = () => {
         </NavLink>
       </li>
       <li className="nav-item mr-4">
-        <NavLink
-          className="nav-link footerLink"
+        <button
+          className="nav-link btn-gallery1"
           to="/gallery"
-          style={{ color: "white" }}
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+          style={{ backgroundColor: "#f86250", color: "white" }}
         >
           Gallery
-        </NavLink>
+        </button>
       </li>
     </ul>
   );
