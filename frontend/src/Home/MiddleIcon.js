@@ -2,13 +2,17 @@ import React from "react";
 import "./MiddleIcon.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MiddleIcon = ({ type, linkTo, animal }) => {
   return (
     <>
       {" "}
-      <Link className="linkHolder" to={linkTo}>
+      <Link
+        className="linkHolder"
+        to={linkTo}
+        onClick="$('.modal').modal('hide')"
+      >
         <div className="iconHolder">
           <div style={{ display: "flex", justifyContent: "center" }}>
             {/* <FontAwesomeIcon icon="fa-regular fa-dog" /> */}
