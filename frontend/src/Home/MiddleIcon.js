@@ -15,7 +15,6 @@ const MiddleIcon = ({ type, linkTo, animal }) => {
       >
         <div className="iconHolder">
           <div style={{ display: "flex", justifyContent: "center" }}>
-            {/* <FontAwesomeIcon icon="fa-regular fa-dog" /> */}
             <FontAwesomeIcon
               className="searchIcon"
               style={{ color: "#f36250" }}

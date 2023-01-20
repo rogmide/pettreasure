@@ -1,0 +1,7 @@
+.OtherPetHolder {
+  color: white;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

@@ -5,8 +5,15 @@ import {
   faCat,
   faHippo,
   faCampground,
+  faPaw,
+  faHorse,
+  faFeather,
+  faFish,
+  faCrop,
 } from "@fortawesome/free-solid-svg-icons";
 import "../GeneralCSS/BaseModal.css";
+import "./PetTypeModal.css";
+import OtherAnimalLink from "./OtherAnimalLink";
 
 const PetTypeModal = () => {
   return (
@@ -58,11 +65,33 @@ const PetTypeModal = () => {
                     animal="Cats"
                   />
                 </div>
-                <MiddleIcon
-                  type={faHippo}
-                  linkTo="/gallery/others"
-                  animal="Others"
-                />
+                <div className="OtherPetHolder">
+                  <OtherAnimalLink
+                    animal="Rabbits"
+                    type={faPaw}
+                    linkTo="/gallery/rabbits"
+                  />
+                  <OtherAnimalLink
+                    animal="Small & Furry"
+                    type={faCrop}
+                    linkTo="/gallery/rabbits"
+                  />
+                  <OtherAnimalLink
+                    animal="Horses"
+                    type={faHorse}
+                    linkTo="/gallery/rabbits"
+                  />
+                  <OtherAnimalLink
+                    animal="Brids"
+                    type={faFeather}
+                    linkTo="/gallery/rabbits"
+                  />
+                  <OtherAnimalLink
+                    animal="Scale, Fin & Others"
+                    type={faFish}
+                    linkTo="/gallery/rabbits"
+                  />
+                </div>
               </div>
             </div>
             <div className="modal-footer">
