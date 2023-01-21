@@ -1,7 +1,6 @@
 import React from "react";
 import "./MiddleIcon.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { Link } from "react-router-dom";
 
 const MiddleIcon = ({ type, linkTo, animal }) => {

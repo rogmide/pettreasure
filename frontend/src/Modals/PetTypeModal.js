@@ -78,27 +78,27 @@ const PetTypeModal = () => {
                 <OtherAnimalLink
                   animal="Rabbits"
                   type={faPaw}
-                  linkTo="/gallery/rabbits"
+                  linkTo="/gallery/others/rabbit"
                 />
                 <OtherAnimalLink
                   animal="Small & Furry"
                   type={faCrop}
-                  linkTo="/gallery/rabbits"
+                  linkTo="/gallery/others/small-furry"
                 />
                 <OtherAnimalLink
                   animal="Horses"
                   type={faHorse}
-                  linkTo="/gallery/rabbits"
+                  linkTo="/gallery/others/horse"
                 />
                 <OtherAnimalLink
                   animal="Brids"
                   type={faFeather}
-                  linkTo="/gallery/rabbits"
+                  linkTo="/gallery/others/bird"
                 />
                 <OtherAnimalLink
                   animal="Scale, Fin & Others"
                   type={faFish}
-                  linkTo="/gallery/rabbits"
+                  linkTo="/gallery/others/scales-fins-other"
                 />
               </div>
             </div>
