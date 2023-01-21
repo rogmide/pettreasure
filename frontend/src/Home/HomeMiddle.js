@@ -27,11 +27,13 @@ const HomeMiddle = () => {
           <div className="iconHolders">
             <MiddleIcon type={faDog} linkTo="/gallery/dogs" animal="Dogs" />
             <MiddleIcon type={faCat} linkTo="/gallery/cats" animal="Cats" />
-            <MiddleIcon
-              type={faHippo}
-              linkTo="/gallery/others"
-              animal="Others"
-            />
+            <a data-toggle="modal" data-target="#exampleModalCenter">
+              <MiddleIcon
+                type={faHippo}
+                // linkTo="/gallery/others"
+                animal="Others"
+              />
+            </a>
             <MiddleIcon
               type={faCampground}
               linkTo="/shelters"
