@@ -63,8 +63,8 @@ function Routes_Base({ login, signup }) {
           ></Route>
           <Route
             exact
-            path="/gallery/others"
-            element={<Gallery currType="others" />}
+            path="/gallery/others/:animal"
+            element={<Gallery currType={null} />}
           ></Route>
 
           {/* Ensuring that the user is login to access this routes */}

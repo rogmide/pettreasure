@@ -44,7 +44,14 @@ const PetTypeModal = () => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">
+            <div
+              className="modal-body"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
               <div>
                 <p style={{ textAlign: "center" }}>
                   What kind of pet are you looking for?
@@ -65,33 +72,34 @@ const PetTypeModal = () => {
                     animal="Cats"
                   />
                 </div>
-                <div className="OtherPetHolder">
-                  <OtherAnimalLink
-                    animal="Rabbits"
-                    type={faPaw}
-                    linkTo="/gallery/rabbits"
-                  />
-                  <OtherAnimalLink
-                    animal="Small & Furry"
-                    type={faCrop}
-                    linkTo="/gallery/rabbits"
-                  />
-                  <OtherAnimalLink
-                    animal="Horses"
-                    type={faHorse}
-                    linkTo="/gallery/rabbits"
-                  />
-                  <OtherAnimalLink
-                    animal="Brids"
-                    type={faFeather}
-                    linkTo="/gallery/rabbits"
-                  />
-                  <OtherAnimalLink
-                    animal="Scale, Fin & Others"
-                    type={faFish}
-                    linkTo="/gallery/rabbits"
-                  />
-                </div>
+              </div>
+              <p style={{ marginTop: "30px" }}> Other Animals</p>
+              <div className="OtherPetHolder">
+                <OtherAnimalLink
+                  animal="Rabbits"
+                  type={faPaw}
+                  linkTo="/gallery/rabbits"
+                />
+                <OtherAnimalLink
+                  animal="Small & Furry"
+                  type={faCrop}
+                  linkTo="/gallery/rabbits"
+                />
+                <OtherAnimalLink
+                  animal="Horses"
+                  type={faHorse}
+                  linkTo="/gallery/rabbits"
+                />
+                <OtherAnimalLink
+                  animal="Brids"
+                  type={faFeather}
+                  linkTo="/gallery/rabbits"
+                />
+                <OtherAnimalLink
+                  animal="Scale, Fin & Others"
+                  type={faFish}
+                  linkTo="/gallery/rabbits"
+                />
               </div>
             </div>
             <div className="modal-footer">
