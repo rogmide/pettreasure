@@ -2,19 +2,20 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./PetPicCarousel.css";
-import MessagesCard from "../Home/MessagesCard";
+import { v4 as uuidv4 } from "uuid";
 
-const PetPicCarousel = () => {
+const PetPicCarousel = ({ pet }) => {
   return (
     <>
-      <div
-        id="carouselExampleControls"
-        className="carousel slide"
-        data-ride="carousel"
-      >
-        <div className="carousel-inner carousellHolder">
-          <div style={{ marginLeft: "16%" }}>
-            {/* FOR THE CAROUSEL TO WORK HAS TO STAR ON A ACTIVE FIRST AND THEN RUN THE COROUSEL ITEMS
+      {pet ? (
+        <div
+          id="carouselExampleControls"
+          className="carousel slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div>
+              {/* FOR THE CAROUSEL TO WORK HAS TO STAR ON A ACTIVE FIRST AND THEN RUN THE COROUSEL ITEMS
             
             SOOOOOO
 
@@ -37,61 +38,55 @@ const PetPicCarousel = () => {
 
             
             */}
-            <div className="carousel-item active">
-              <MessagesCard
-                src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                name="Pedro Cannizares"
-                msg="Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!"
-              />
-            </div>
-            <div className="carousel-item">
-              <MessagesCard
-                src="https://images.unsplash.com/photo-1506201803590-8586d5a760e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                name="Roger Delgado"
-                msg="Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!"
-              />
-            </div>
-            <div className="carousel-item">
-              <MessagesCard
-                src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
-                name="Carlos Menendes"
-                msg="Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!"
-              />
+
+              <div key={uuidv4()} className="carousel-item active">
+                <img src={pet.photos.pop().full} alt="first pic" />
+              </div>
+
+              {pet.photos.map((pic) => (
+                <div key={uuidv4()} className="carousel-item">
+                  <img src={pic.full} alt="first pic" />
+                </div>
+              ))}
             </div>
           </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span className="arrowIcon1">
+              <FontAwesomeIcon
+                className="arrowIcon1"
+                style={{
+                  color: "white",
+                  fontSize: "40px",
+                }}
+                icon={faArrowLeft}
+              />
+            </span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span className="arrowIcon1">
+              <FontAwesomeIcon
+                style={{
+                  color: "white",
+                  fontSize: "40px",
+                }}
+                icon={faArrowRight}
+              />
+            </span>
+          </a>
         </div>
-        <a
-          className="carousel-control-prev"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="prev"
-        >
-          <span className="arrowIcon1">
-            <FontAwesomeIcon
-              className="arrowIcon1"
-              style={{
-                fontSize: "40px",
-              }}
-              icon={faArrowLeft}
-            />
-          </span>
-        </a>
-        <a
-          className="carousel-control-next"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="next"
-        >
-          <span className="arrowIcon1">
-            <FontAwesomeIcon
-              style={{
-                fontSize: "40px",
-              }}
-              icon={faArrowRight}
-            />
-          </span>
-        </a>
-      </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
