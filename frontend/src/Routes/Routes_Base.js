@@ -11,6 +11,7 @@ import Organizations from "../Organizations/OrganizationsList";
 import Gallery from "../Gallery/Gallery";
 import Footer from "../Footer/Footer";
 import PetTypeModal from "../Modals/PetTypeModal";
+import PetDetails from "../Pet/PetDetails";
 import "./Routes_Base.css";
 
 function Routes_Base({ login, signup }) {
@@ -66,6 +67,7 @@ function Routes_Base({ login, signup }) {
             path="/gallery/others/:animal"
             element={<Gallery currType={null} />}
           ></Route>
+          <Route exact path="/animal/:animal" element={<PetDetails />}></Route>
 
           {/* Ensuring that the user is login to access this routes */}
           {SecureRoute("/profile", <UserProfile />)}

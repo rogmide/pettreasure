@@ -56,7 +56,7 @@ const PetList = ({ currType }) => {
         <div className="petHolder">
           {pets
             ? pets.map((p) => (
-                <GalleryPetCard key={uuidv4()} pet={p} linkTo={`pet/${p.id}`} />
+                <GalleryPetCard key={uuidv4()} pet={p} linkTo={`/animal/${p.id}`} />
               ))
             : ""}
         </div>

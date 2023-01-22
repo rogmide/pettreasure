@@ -1,10 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import "./MessagesList.css";
-import MessagesCard from "./MessagesCard";
+import "./PetPicCarousel.css";
+import MessagesCard from "../Home/MessagesCard";
 
-const MessagesList = () => {
+const PetPicCarousel = () => {
   return (
     <>
       <div
@@ -96,4 +96,4 @@ const MessagesList = () => {
   );
 };
 
-export default MessagesList;
+export default PetPicCarousel;

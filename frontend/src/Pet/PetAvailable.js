@@ -83,7 +83,11 @@ const PetAviable = () => {
         <div className="petHolder">
           {pets
             ? pets.map((p) => (
-                <PetAvailableCard key={p.id} pet={p} linkTo={`pet/${p.id}`} />
+                <PetAvailableCard
+                  key={p.id}
+                  pet={p}
+                  linkTo={`animal/${p.id}`}
+                />
               ))
             : ""}
           <div
