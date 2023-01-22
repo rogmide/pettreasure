@@ -30,11 +30,13 @@ class PetTreasureApi {
 
   /** Get pets */
 
+  // Request Random Pet from API
   static async getRandomPet(limit, type) {
     let res = await this.request(`pets/random`, { limit: limit, type: type });
     return res.pets;
   }
 
+  // Request page 20 at the time from API using TYpe, Page, and Location
   static async getPets(limit, type, page, location) {
     console.log(limit, type, page, location);
     let res = await this.request(`pets/gallery`, {
@@ -43,6 +45,12 @@ class PetTreasureApi {
       page: page,
       location: location,
     });
+    return res.pets;
+  }
+
+  // Request a single pet by ID from the API
+  static async getPetById(pet_id) {
+    let res = await this.request(`pets/pet`, { pet_id: pet_id });
     return res.pets;
   }
 

@@ -21,6 +21,16 @@ router.get("/random", async function (req, res, next) {
   }
 });
 
+router.get("/pet", async function (req, res, next) {
+  const { pet_id } = req.query;
+  try {
+    const pets = await Pet.getPetById(pet_id);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 router.get("/gallery", async function (req, res, next) {
   const { limit, type, page, location } = req.query;
   try {
