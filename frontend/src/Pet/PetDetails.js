@@ -54,6 +54,50 @@ const PetDetails = () => {
                   : ""}
               </p>
             </div>
+            <div>
+              <h3 className="petName1">About</h3>
+              {pet.tags.length !== 0 ? (
+                <div>
+                  <p>CHARACTERISTICS</p>
+                  <p className="chararteristics">
+                    • {pet.tags ? pet.tags.map((tag) => tag + " • ") : ""}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              {pet.coat ? (
+                <div>
+                  <p>COAT LENGTH</p>
+                  <p className="chararteristics">• {pet.coat}</p>
+                </div>
+              ) : (
+                ""
+              )}
+
+              <p>HOUSE-TRAINED</p>
+              <p className="chararteristics">
+                {" "}
+                • {pet.attributes.house_trained ? "Yes" : "No"}
+              </p>
+
+              <p>HEALTH</p>
+              <p className="chararteristics">
+                {" "}
+                {" "}
+                {pet.attributes.shots_current
+                  ? "• Vaccinations up to date"
+                  : ""}
+                {pet.attributes.spayed_neutered ? " • spayed / neutered." : ""}
+              </p>
+              <p>GOOD IN A HOME WITH</p>
+              <p className="chararteristics">
+                {" "}
+                {pet.environment.children ? " • Children " : ""}
+                {pet.environment.cats ? " • Cats " : ""}
+                {pet.environment.dogs ? " • Dogs" : ""}
+              </p>
+            </div>
           </div>
         ) : (
           ""
