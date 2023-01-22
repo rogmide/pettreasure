@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PetPicCarousel from "./PetPicCarousel";
 import PetTreasureApi from "../API/Api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import "./PetDetails.css";
 
 const PetDetails = () => {
@@ -41,7 +43,18 @@ const PetDetails = () => {
         <PetPicCarousel pet={pet} />
         {pet ? (
           <div className="petDetailText">
-            <h3 className="petName1">{pet.name}</h3>
+            <div className="nameFavHolder">
+              <h3 className="petName1">{pet.name}</h3>
+
+              {/* BROKEN HEAR FOR WHEN THE USER HAS THE PET AS NO FAVORITE PET
+                  THE IDEA IS MAKE THE HARD HOLDE WITH MORE EFFECTS WHEN IS FAV */}
+
+              <FontAwesomeIcon
+                className="favHeart"
+                style={{ color: "5c717a" }}
+                icon={faHeartBroken}
+              />
+            </div>
             <p className="petText1">
               {pet.breeds.primary} •{" "}
               {org ? org.address.city + ", " + org.address.state : ""}
@@ -84,19 +97,27 @@ const PetDetails = () => {
               <p>HEALTH</p>
               <p className="chararteristics">
                 {" "}
-                {" "}
                 {pet.attributes.shots_current
                   ? "• Vaccinations up to date"
                   : ""}
                 {pet.attributes.spayed_neutered ? " • spayed / neutered." : ""}
               </p>
-              <p>GOOD IN A HOME WITH</p>
-              <p className="chararteristics">
-                {" "}
-                {pet.environment.children ? " • Children " : ""}
-                {pet.environment.cats ? " • Cats " : ""}
-                {pet.environment.dogs ? " • Dogs" : ""}
-              </p>
+
+              {pet.environment.children ||
+              pet.environment.cats ||
+              pet.environment.dogs ? (
+                <div>
+                  <p>GOOD IN A HOME WITH</p>
+                  <p className="chararteristics">
+                    {" "}
+                    {pet.environment.children ? " • Children " : ""}
+                    {pet.environment.cats ? " • Cats " : ""}
+                    {pet.environment.dogs ? " • Dogs" : ""}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         ) : (

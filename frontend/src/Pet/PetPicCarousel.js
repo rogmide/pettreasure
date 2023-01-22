@@ -55,6 +55,7 @@ const PetPicCarousel = ({ pet }) => {
             href="#carouselExampleControls"
             role="button"
             data-slide="prev"
+            style={{ height: "fit-content" }}
           >
             <span className="arrowIcon1">
               <FontAwesomeIcon
@@ -72,6 +73,7 @@ const PetPicCarousel = ({ pet }) => {
             href="#carouselExampleControls"
             role="button"
             data-slide="next"
+            style={{ height: "fit-content" }}
           >
             <span className="arrowIcon1">
               <FontAwesomeIcon

@@ -9,7 +9,6 @@ import {
   faHeart,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-
 import SearchForm from "../CommunComponent/SearchForm";
 
 const SearchHeartIcons = () => {

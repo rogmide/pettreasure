@@ -41,3 +41,13 @@
   font-size: 14px;
   margin-top: -18px;
 }
+
+.nameFavHolder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favHeart {
+  font-size: 50px;
+  margin-top: -7px;
+}
