@@ -4,6 +4,7 @@ import PetPicCarousel from "./PetPicCarousel";
 import PetTreasureApi from "../API/Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
+import OrganizationCard from "../Organizations/OrganizationCard";
 import "./PetDetails.css";
 
 const PetDetails = () => {
@@ -124,6 +125,7 @@ const PetDetails = () => {
           ""
         )}
       </div>
+      <OrganizationCard org={org} />
     </>
   );
 };
