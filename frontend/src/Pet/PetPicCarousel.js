@@ -51,7 +51,7 @@ const PetPicCarousel = ({ pet }) => {
             </div>
           </div>
           <a
-            className="carousel-control-prev"
+            className="carousel-control-prev next-back"
             href="#carouselExampleControls"
             role="button"
             data-slide="prev"
@@ -69,7 +69,7 @@ const PetPicCarousel = ({ pet }) => {
             </span>
           </a>
           <a
-            className="carousel-control-next"
+            className="carousel-control-next next-back"
             href="#carouselExampleControls"
             role="button"
             data-slide="next"
