@@ -1,5 +1,12 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleRight,
+  faMapLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import "./OrganizationCard.css";
+import { Link } from "react-router-dom";
 
 const OrganizationCard = ({ org }) => {
   console.log(org);
@@ -8,6 +15,21 @@ const OrganizationCard = ({ org }) => {
       {org ? (
         <div style={{ display: "flex" }}>
           <div className="card mb-3 orgHolder">
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <h3 className="petName1" style={{ marginTop: "8px" }}>
+                Organization
+              </h3>
+              <p className="petName1">
+                <Link>
+                  <FontAwesomeIcon
+                    style={{ color: "5c717a", marginRight: "2px" }}
+                    icon={faAngleRight}
+                  />{" "}
+                  More Details
+                </Link>
+              </p>
+            </div>
+            <div className="somePetDetail2"></div>
             <img
               className="card-img-top"
               src={
@@ -25,8 +47,14 @@ const OrganizationCard = ({ org }) => {
                 {org.name} •{" "}
                 {org ? org.address.city + ", " + org.address.state : ""}
               </h5>
-              <p className="card-text">Location Address</p>
+
+              <p className="card-text"> </p>
               <p className="card-text">
+                <FontAwesomeIcon
+                  className=""
+                  style={{ color: "5c717a", marginRight: "2px" }}
+                  icon={faMapLocationDot}
+                />{" "}
                 {org.address.address1 ? org.address.address1 : ""}{" "}
                 {org
                   ? org.address.city +
@@ -39,12 +67,16 @@ const OrganizationCard = ({ org }) => {
               <p className="card-text">
                 <small className="text-muted">
                   {" "}
-                  Phone:
+                  <FontAwesomeIcon
+                    className=""
+                    style={{ color: "5c717a", marginRight: "10px" }}
+                    icon={faPhone}
+                  />{" "}
                   {org.phone ? org.phone : ""}{" "}
                 </small>
               </p>
             </div>
-            <div className="mapAddress"></div>
+            {/* <div className="mapAddress"></div> */}
           </div>
         </div>
       ) : (

@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 const PetPicCarousel = ({ pet }) => {
   return (
     <>
-      {pet ? (
+      {pet && pet.primary_photo_cropped ? (
         <div
           id="carouselExampleControls"
           className="carousel slide"
@@ -55,7 +55,7 @@ const PetPicCarousel = ({ pet }) => {
             href="#carouselExampleControls"
             role="button"
             data-slide="prev"
-            style={{ height: "fit-content" }}
+            // style={{ height: "fit-content" }}
           >
             <span className="arrowIcon1">
               <FontAwesomeIcon
@@ -73,7 +73,7 @@ const PetPicCarousel = ({ pet }) => {
             href="#carouselExampleControls"
             role="button"
             data-slide="next"
-            style={{ height: "fit-content" }}
+            // style={{ height: "fit-content" }}
           >
             <span className="arrowIcon1">
               <FontAwesomeIcon

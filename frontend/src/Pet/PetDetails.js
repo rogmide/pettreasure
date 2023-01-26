@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 import PetPicCarousel from "./PetPicCarousel";
 import PetTreasureApi from "../API/Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeartBroken,
+  faLocation,
+  faShippingFast,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 import OrganizationCard from "../Organizations/OrganizationCard";
 import "./PetDetails.css";
 
@@ -122,7 +127,7 @@ const PetDetails = () => {
             </div>
           </div>
         ) : (
-          ""
+          <div className="loader"></div>
         )}
       </div>
       <OrganizationCard org={org} />
