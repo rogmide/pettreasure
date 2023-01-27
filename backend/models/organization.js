@@ -14,6 +14,20 @@ class Organization {
       console.log(error);
     }
   }
+
+  static async getOrganizations(limit, page, location) {
+    try {
+      const resp = await api_request(`organizations`, {
+        page: page,
+        limit: limit,
+        sort: "distance",
+        location: location,
+      });
+      return resp.organizations;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = Organization;

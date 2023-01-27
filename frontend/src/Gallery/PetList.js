@@ -4,14 +4,18 @@ import GalleryPetCard from "./GalleryPetCard";
 import { v4 as uuidv4 } from "uuid";
 import "../GeneralCSS/Spinner.css";
 
-const PetList = ({ currType }) => {
+const PetList = ({ currType, org_id }) => {
   const [pets, setPets] = useState();
   const [pageCount, setPageCount] = useState(1);
 
   useEffect(
     function PreLoadInfo() {
       async function getInitialPet() {
-        getPets();
+        if (org_id) {
+          getPetsForOrg(100, org_id);
+        } else {
+          getPets();
+        }
       }
       getInitialPet();
     },
@@ -27,6 +31,21 @@ const PetList = ({ currType }) => {
 
       let resp = await PetTreasureApi.getPets(limit, type, 1, "33511");
       setPageCount(1);
+      setPets(resp);
+    } catch (errors) {
+      console.log(errors);
+    }
+  }
+
+  async function getPetsForOrg(limit = 20, org_id) {
+    try {
+      // HERE HAD TO WORK WITH LOCATION USER LOCATION
+      // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
+      // NEED TO STAR WORKING ON THAT ASAP
+
+      let resp = await PetTreasureApi.getPetsForOrg(limit, org_id);
+      setPageCount(1);
+      console.log(resp);
       setPets(resp);
     } catch (errors) {
       console.log(errors);

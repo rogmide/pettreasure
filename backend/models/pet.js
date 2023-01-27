@@ -57,6 +57,7 @@ class Pet {
   //      location: location is the location that the user enter to show pet that are close to
   //                his/her zip code
 
+  //
   static async getPetGallery(
     limit = 20,
     animals = "dog",
@@ -81,6 +82,19 @@ class Pet {
         });
         return reps.animals;
       }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async galleryForOrg(limit, org_id) {
+    try {
+      const reps = await api_request(`animals`, {
+        limit: limit,
+        organization: org_id,
+      });
+
+      return reps.animals;
     } catch (error) {
       console.log(error);
     }

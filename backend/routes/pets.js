@@ -39,4 +39,14 @@ router.get("/gallery", async function (req, res, next) {
   }
 });
 
+router.get("/galleryfororg", async function (req, res, next) {
+  const { limit, org_id } = req.query;
+  try {
+    const pets = await Pet.galleryForOrg(limit, org_id);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

@@ -20,4 +20,18 @@ router.get("/organization", async function (req, res, next) {
   }
 });
 
+router.get("/organizations", async function (req, res, next) {
+  const { limit, page, location } = req.query;
+  try {
+    const organizations = await Organization.getOrganizations(
+      limit,
+      page,
+      location
+    );
+    return res.json({ organizations });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

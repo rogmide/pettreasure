@@ -64,6 +64,11 @@ function Routes_Base({ login, signup }) {
           ></Route>
           <Route
             exact
+            path="/gallery/orgsearch/:org_id"
+            element={<Gallery />}
+          ></Route>
+          <Route
+            exact
             path="/gallery/others/:animal"
             element={<Gallery currType={null} />}
           ></Route>

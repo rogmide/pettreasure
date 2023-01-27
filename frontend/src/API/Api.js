@@ -36,7 +36,7 @@ class PetTreasureApi {
     return res.pets;
   }
 
-  // Request page 20 at the time from API using TYpe, Page, and Location
+  // Requests 20 pets per pages at the time from API using TYpe, Page, and Location
   static async getPets(limit, type, page, location) {
     console.log(limit, type, page, location);
     let res = await this.request(`pets/gallery`, {
@@ -44,6 +44,15 @@ class PetTreasureApi {
       type: type,
       page: page,
       location: location,
+    });
+    return res.pets;
+  }
+
+  // Get Pets that are currentlly in a organization
+  static async getPetsForOrg(limit, org_id) {
+    let res = await this.request(`pets/galleryfororg`, {
+      limit: limit,
+      org_id: org_id,
     });
     return res.pets;
   }
@@ -66,6 +75,16 @@ class PetTreasureApi {
   static async getOrganizationById(org_id) {
     let res = await this.request(`organizations/organization`, {
       org_id: org_id,
+    });
+    return res.organizations;
+  }
+
+  // Requests 20 organizations per pages at the time from API using Limit, Page, and Location
+  static async getOrgs(limit, page, location) {
+    let res = await this.request(`organizations/organizations`, {
+      limit: limit,
+      page: page,
+      location: location,
     });
     return res.organizations;
   }
