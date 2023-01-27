@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PetTreasureApi from "../API/Api";
 import GalleryPetCard from "./GalleryPetCard";
 import { v4 as uuidv4 } from "uuid";
+import "../GeneralCSS/Spinner.css";
 
 const PetList = ({ currType }) => {
   const [pets, setPets] = useState();
@@ -54,11 +55,17 @@ const PetList = ({ currType }) => {
     <>
       <div className="petAvailable">
         <div className="petHolder">
-          {pets
-            ? pets.map((p) => (
-                <GalleryPetCard key={uuidv4()} pet={p} linkTo={`/animal/${p.id}`} />
-              ))
-            : ""}
+          {pets ? (
+            pets.map((p) => (
+              <GalleryPetCard
+                key={uuidv4()}
+                pet={p}
+                linkTo={`/animal/${p.id}`}
+              />
+            ))
+          ) : (
+            <div className="loader"></div>
+          )}
         </div>
 
         <div

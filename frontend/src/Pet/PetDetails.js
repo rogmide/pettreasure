@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import OrganizationCard from "../Organizations/OrganizationCard";
 import "./PetDetails.css";
+import "../GeneralCSS/Spinner.css";
 
 const PetDetails = () => {
   const [pet, setPet] = useState();
@@ -57,7 +58,7 @@ const PetDetails = () => {
 
               <FontAwesomeIcon
                 className="favHeart"
-                style={{ color: "5c717a" }}
+                style={{ color: "5c717a", marginTop: "4px" }}
                 icon={faHeartBroken}
               />
             </div>
@@ -127,7 +128,9 @@ const PetDetails = () => {
             </div>
           </div>
         ) : (
-          <div className="loader"></div>
+          <div className="loaderDetailPet">
+            <div className="loader"></div>
+          </div>
         )}
       </div>
       <OrganizationCard org={org} />
