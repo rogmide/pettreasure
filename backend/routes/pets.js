@@ -49,4 +49,14 @@ router.get("/galleryfororg", async function (req, res, next) {
   }
 });
 
+router.get("/isfavorite", async function (req, res, next) {
+  const { user_id, pet_id } = req.query;
+  try {
+    const pets = await Pet.getIsFavorite(user_id, pet_id);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

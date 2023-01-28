@@ -22,8 +22,9 @@ CREATE TABLE config (
 );
 
 CREATE TABLE favorite (
-  user_id varchar(25) PRIMARY KEY,
-  pet_id integer NOT NULL
+  user_id varchar(25) REFERENCES users ON DELETE CASCADE,
+  pet_id integer,
+  PRIMARY KEY (user_id, pet_id)
 );
 
 -- CREATE TABLE applications (

@@ -63,6 +63,12 @@ class PetTreasureApi {
     return res.pets;
   }
 
+  // Request favorite pet from backend DB
+  static async getIsFavorite(user_id, pet_id) {
+    let res = await this.request(`pets/isfavorite`, { user_id: user_id, pet_id: pet_id });
+    return res.pets;
+  }
+
   //######################################################################
   // End Pets Section
   //######################################################################

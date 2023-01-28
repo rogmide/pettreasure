@@ -45,6 +45,20 @@ class Pet {
     }
   }
 
+  // SELECT user_id, pet_id from favorite where user_id = 'roger'
+  static async getIsFavorite(user_id, pet_id) {
+    const favPets = await db.query(
+      `SELECT user_id, pet_id
+             FROM favorite
+             WHERE user_id = $1 and pet_id = $2`,
+      [user_id, pet_id]
+    );
+
+    const fav = favPets.rows[0];
+
+    return fav;
+  }
+
   // ########################################################################
   // Get pet list from the API,
   // Params:
