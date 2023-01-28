@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import PetPicCarousel from "./PetPicCarousel";
 import PetTreasureApi from "../API/Api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeartBroken,
-  faLocation,
-  faShippingFast,
-  faSpinner,
-} from "@fortawesome/free-solid-svg-icons";
 import OrganizationCard from "../Organizations/OrganizationCard";
 import "./PetDetails.css";
 import "../GeneralCSS/Spinner.css";
+import Favorite from "../Favorite/Favorite.js";
+import UserContext from "../UseContext";
 
 const PetDetails = () => {
   const [pet, setPet] = useState();
   const [org, setOrganization] = useState();
   const { pet_id } = useParams();
+  const { currUser } = useContext(UserContext);
 
   useEffect(
     function PreLoadInfo() {
@@ -32,11 +28,9 @@ const PetDetails = () => {
   async function getPetAndOrganization() {
     try {
       let respPet = await PetTreasureApi.getPetById(pet_id);
-      console.log(respPet);
       let respOrg = await PetTreasureApi.getOrganizationById(
         respPet.organization_id
       );
-      console.log(respOrg);
       setPet(respPet);
       setOrganization(respOrg);
     } catch (errors) {
@@ -55,12 +49,14 @@ const PetDetails = () => {
 
               {/* BROKEN HEAR FOR WHEN THE USER HAS THE PET AS NO FAVORITE PET
                   THE IDEA IS MAKE THE HARD HOLDE WITH MORE EFFECTS WHEN IS FAV */}
+              {/* WHEN SEND FOR REMOVE PET FROM DB GIVE ME A ERROR AND DONT UPDATE THE COMPONETN
+              NEED TO FIND OUT WHAT IS GOING ON THERE  */}
 
-              <FontAwesomeIcon
-                className="favHeart"
-                style={{ color: "5c717a", marginTop: "4px" }}
-                icon={faHeartBroken}
-              />
+              {/* NEXXT STEP WORKING ON FAVORITE LIST FOR USER LOGIN */}
+              {/* FIX LOGIN AND REGISTRATION */}
+              <div style={{ position: "relative" }}>
+                {currUser ? <Favorite pet={pet} /> : ""}
+              </div>
             </div>
             <p className="petText1">
               {pet.breeds.primary} •{" "}

@@ -38,7 +38,6 @@ class PetTreasureApi {
 
   // Requests 20 pets per pages at the time from API using TYpe, Page, and Location
   static async getPets(limit, type, page, location) {
-    console.log(limit, type, page, location);
     let res = await this.request(`pets/gallery`, {
       limit: limit,
       type: type,
@@ -74,7 +73,6 @@ class PetTreasureApi {
 
   // Request to set favorite pet in backend DB
   static async setIsFavorite(user_id, pet_id) {
-    console.log(user_id, pet_id);
     let res = await this.request(`pets/setfavorite`, {
       user_id: user_id,
       pet_id: pet_id,
@@ -84,12 +82,11 @@ class PetTreasureApi {
 
   // Request to remove favorite pet in backend DB
   static async removeFavorite(user_id, pet_id) {
-    console.log(user_id, pet_id);
     let res = await this.request(`pets/removefavorite`, {
       user_id: user_id,
       pet_id: pet_id,
     });
-    return res.pets;
+    return res;
   }
 
   //######################################################################

@@ -30,7 +30,7 @@ const PetList = ({ currType, org_id }) => {
       // HERE HAD TO WORK WITH LOCATION USER LOCATION
       // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
       // NEED TO STAR WORKING ON THAT ASAP
-      console.log(zip_code);
+
       let resp = await PetTreasureApi.getPets(limit, type, 1, zip_code);
       setPageCount(1);
       setPets(resp);

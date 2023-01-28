@@ -35,27 +35,29 @@ const Favorite = ({ pet }) => {
     }
   }
 
-  async function addOrRemoveFavoritePet(action) {
+  async function addFavorite() {
     try {
-      if (action === "add") {
-        let resp = await PetTreasureApi.setIsFavorite(
-          currUser ? currUser.username : undefined,
-          pet.id
-        );
-        if (resp) {
-          setIsFavorite(!isFavorite);
-        }
-      } else {
-        let resp = await PetTreasureApi.removeFavorite(
-          currUser ? currUser.username : undefined,
-          pet.id
-        );
-        if (resp) {
-          setIsFavorite(!isFavorite);
-        }
+      let resp = await PetTreasureApi.setIsFavorite(
+        currUser ? currUser.username : undefined,
+        pet.id
+      );
+      if (resp) {
+        setIsFavorite(!isFavorite);
       }
-    } catch (errors) {
-      console.log(errors);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function removeFavorite() {
+    try {
+      let resp = await PetTreasureApi.removeFavorite(
+        currUser ? currUser.username : undefined,
+        pet.id
+      );
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -63,25 +65,19 @@ const Favorite = ({ pet }) => {
     <>
       <div className="fav_icon">
         {isFavorite ? (
-          <Link
-            className="is_FAvorite"
-            onClick={() => addOrRemoveFavoritePet("remove")}
-          >
+          <button className="is_FAvorite" onClick={() => removeFavorite()}>
             <FontAwesomeIcon
               style={{ fontSize: "25px", color: "#f36250" }}
               icon={faHeart}
             />
-          </Link>
+          </button>
         ) : (
-          <Link
-            className="not_favorite"
-            onClick={() => addOrRemoveFavoritePet("add")}
-          >
+          <button className="not_favorite" onClick={() => addFavorite()}>
             <FontAwesomeIcon
               style={{ fontSize: "25px", color: "#5c717a" }}
               icon={faHeartBroken}
             />
-          </Link>
+          </button>
         )}
       </div>
     </>
