@@ -40,6 +40,7 @@ function App() {
 
   async function signup(info) {
     try {
+      console.log(info)
       let token = await PetTreasureApi.signup(info);
       setToken(token);
       return true;

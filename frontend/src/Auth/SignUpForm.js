@@ -10,6 +10,7 @@ const SignUpForm = ({ signup }) => {
     firstName: "",
     lastName: "",
     email: "",
+    zip_code: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [error, setError] = useState("");
@@ -30,7 +31,6 @@ const SignUpForm = ({ signup }) => {
       return;
     }
     delete formData.password1;
-    alert();
     const resp = await signup({ ...formData });
     setError(resp);
   }
@@ -140,6 +140,20 @@ const SignUpForm = ({ signup }) => {
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               onInvalid={erroMsg}
               value={formData.email}
+              onChange={handleChange}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label htmlFor="zip_code">Zip Code: </label>
+            <input
+              className="form-control"
+              id="zip_code"
+              type="number"
+              name="zip_code"
+              placeholder="Optional"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              onInvalid={erroMsg}
+              value={formData.zip_code}
               onChange={handleChange}
             ></input>
           </div>

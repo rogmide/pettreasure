@@ -65,6 +65,7 @@ class User {
     lastName,
     email,
     isAdmin,
+    zip_code,
   }) {
     const duplicateCheck = await db.query(
       `SELECT username
@@ -79,6 +80,8 @@ class User {
 
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
 
+    console.log(zip_code);
+
     const result = await db.query(
       `INSERT INTO users
            (username,
@@ -86,10 +89,19 @@ class User {
             first_name,
             last_name,
             email,
-            is_admin)
-           VALUES ($1, $2, $3, $4, $5, $6)
-           RETURNING username, first_name AS "firstName", last_name AS "lastName", email, is_admin AS "isAdmin"`,
-      [username, hashedPassword, firstName, lastName, email, isAdmin]
+            is_admin,
+            zip_code)
+           VALUES ($1, $2, $3, $4, $5, $6, $7)
+           RETURNING username, first_name AS "firstName", last_name AS "lastName", email, is_admin AS "isAdmin", zip_code`,
+      [
+        username,
+        hashedPassword,
+        firstName,
+        lastName,
+        email,
+        isAdmin,
+        zip_code ? parseInt(zip_code) : null,
+      ]
     );
 
     const user = result.rows[0];
