@@ -1,39 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import "./GalleryPetCard.css";
 import { Link } from "react-router-dom";
-import PetTreasureApi from "../API/Api";
-import UserContext from "../UseContext";
+
 import Favorite from "../Favorite/Favorite";
 
 const GalleryPetCard = ({ pet, linkTo }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const { currUser } = useContext(UserContext);
-
-  useEffect(
-    function PreLoadInfo() {
-      async function getIsFavorite() {
-        getFavoritePet();
-      }
-      getIsFavorite();
-    },
-
-    []
-  );
-
-  async function getFavoritePet() {
-    try {
-      let resp = await PetTreasureApi.getIsFavorite(
-        currUser ? currUser.username : undefined,
-        pet.id
-      );
-      if (resp) {
-        setIsFavorite(!isFavorite);
-      }
-    } catch (errors) {
-      console.log(errors);
-    }
-  }
-
   return (
     <>
       <Link className="linkHolder" to={linkTo}>
@@ -42,7 +13,7 @@ const GalleryPetCard = ({ pet, linkTo }) => {
           <div className="cardHolder2">
             {pet && pet.primary_photo_cropped ? (
               <div style={{ position: "relative" }}>
-                <Favorite fav={isFavorite} />
+                <Favorite pet={pet} />
                 <img
                   className="imgHolder2"
                   src={

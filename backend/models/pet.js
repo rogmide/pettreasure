@@ -45,7 +45,7 @@ class Pet {
     }
   }
 
-  // SELECT user_id, pet_id from favorite where user_id = 'roger'
+  // Get the favorite pet from local DB
   static async getIsFavorite(user_id, pet_id) {
     const favPets = await db.query(
       `SELECT user_id, pet_id
@@ -57,6 +57,33 @@ class Pet {
     const fav = favPets.rows[0];
 
     return fav;
+  }
+
+  // Add Favorite pet to local DB
+  static async setIsFavorite(user_id, pet_id) {
+    const favPets = await db.query(
+      `INSERT INTO favorite (user_id, pet_id)
+       VALUES ($1, $2) 
+       RETURNING user_id, pet_id`,
+      [user_id, pet_id]
+    );
+
+    const fav = favPets.rows[0];
+
+    return fav;
+  }
+  // Add Favorite pet to local DB
+  static async removeFavorite(user_id, pet_id) {
+    const result = await db.query(
+      `DELETE
+       FROM favorite
+       WHERE user_id = $1 and pet_id = $2
+       RETURNING user_id, pet_id`,
+      [user_id, pet_id]
+    );
+    const resp = result.rows[0];
+
+    if (!resp) throw new NotFoundError(`No Fav Pet Found: ${pet_id}`);
   }
 
   // ########################################################################

@@ -65,7 +65,30 @@ class PetTreasureApi {
 
   // Request favorite pet from backend DB
   static async getIsFavorite(user_id, pet_id) {
-    let res = await this.request(`pets/isfavorite`, { user_id: user_id, pet_id: pet_id });
+    let res = await this.request(`pets/isfavorite`, {
+      user_id: user_id,
+      pet_id: pet_id,
+    });
+    return res.pets;
+  }
+
+  // Request to set favorite pet in backend DB
+  static async setIsFavorite(user_id, pet_id) {
+    console.log(user_id, pet_id);
+    let res = await this.request(`pets/setfavorite`, {
+      user_id: user_id,
+      pet_id: pet_id,
+    });
+    return res.pets;
+  }
+
+  // Request to remove favorite pet in backend DB
+  static async removeFavorite(user_id, pet_id) {
+    console.log(user_id, pet_id);
+    let res = await this.request(`pets/removefavorite`, {
+      user_id: user_id,
+      pet_id: pet_id,
+    });
     return res.pets;
   }
 
