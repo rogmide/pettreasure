@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 const Organizations = () => {
   const [orgs, setOrgs] = useState([]);
   const [pageCount, setPageCount] = useState(1);
-  console.log(orgs);
+
 
   useEffect(
     function PreLoadInfo() {
       async function getInitialOrgs() {
-        getOrgs();
+        getOrgs(100);
       }
       getInitialOrgs();
     },
@@ -66,7 +66,9 @@ const Organizations = () => {
               ? orgs.map((o) => (
                   <tr key={o.id}>
                     <th scope="row">
-                      <FontAwesomeIcon icon={faInfoCircle} />
+                      <Link to={`/organizations/${o.id}`}>
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                      </Link>
                     </th>
                     <td>{o.name}</td>
                     <td>
@@ -91,7 +93,7 @@ const Organizations = () => {
             marginBottom: "40px",
           }}
         >
-          <button
+          {/* <button
             className="linkHolder1 btn-gallery"
             style={{
               backGroundColor: "white",
@@ -102,7 +104,7 @@ const Organizations = () => {
           >
             {" "}
             See More...{" "}
-          </button>
+          </button> */}
         </div>
       </div>
     </>

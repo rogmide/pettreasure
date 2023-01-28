@@ -20,7 +20,7 @@ const OrganizationCard = ({ org }) => {
                 Organization
               </h3>
               <p className="petName1">
-                <Link>
+                <Link to={`/organizations/${org.id}`}>
                   <FontAwesomeIcon
                     style={{ color: "5c717a", marginRight: "2px" }}
                     icon={faAngleRight}

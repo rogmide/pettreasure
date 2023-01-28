@@ -12,6 +12,7 @@ import Gallery from "../Gallery/Gallery";
 import Footer from "../Footer/Footer";
 import PetTypeModal from "../Modals/PetTypeModal";
 import PetDetails from "../Pet/PetDetails";
+import OrganizationDetails from "../Organizations/OrganizationDetails";
 import "./Routes_Base.css";
 
 function Routes_Base({ login, signup }) {
@@ -51,6 +52,11 @@ function Routes_Base({ login, signup }) {
             path="/organizations"
             element={<Organizations />}
           ></Route>
+          <Route
+            exact
+            path="/organizations/:org_id"
+            element={<OrganizationDetails />}
+          ></Route>
           <Route exact path="/gallery" element={<Gallery />}></Route>
           <Route
             exact
@@ -72,6 +78,7 @@ function Routes_Base({ login, signup }) {
             path="/gallery/others/:animal"
             element={<Gallery currType={null} />}
           ></Route>
+
           <Route exact path="/animal/:pet_id" element={<PetDetails />}></Route>
 
           {/* Ensuring that the user is login to access this routes */}
