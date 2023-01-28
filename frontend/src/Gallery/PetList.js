@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PetTreasureApi from "../API/Api";
 import GalleryPetCard from "./GalleryPetCard";
 import { v4 as uuidv4 } from "uuid";
 import "../GeneralCSS/Spinner.css";
+import UserContext from "../UseContext";
 
 const PetList = ({ currType, org_id }) => {
   const [pets, setPets] = useState();
   const [pageCount, setPageCount] = useState(1);
+  const { zip_code } = useContext(UserContext);
 
   useEffect(
     function PreLoadInfo() {
@@ -28,8 +30,8 @@ const PetList = ({ currType, org_id }) => {
       // HERE HAD TO WORK WITH LOCATION USER LOCATION
       // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
       // NEED TO STAR WORKING ON THAT ASAP
-
-      let resp = await PetTreasureApi.getPets(limit, type, 1, "33511");
+      console.log(zip_code);
+      let resp = await PetTreasureApi.getPets(limit, type, 1, zip_code);
       setPageCount(1);
       setPets(resp);
     } catch (errors) {

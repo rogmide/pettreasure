@@ -17,13 +17,21 @@ class Organization {
 
   static async getOrganizations(limit, page, location) {
     try {
-      const resp = await api_request(`organizations`, {
-        page: page,
-        limit: limit,
-        sort: "distance",
-        location: location,
-      });
-      return resp.organizations;
+      if (location) {
+        const resp = await api_request(`organizations`, {
+          page: page,
+          limit: limit,
+          sort: "distance",
+          location: location,
+        });
+        return resp.organizations;
+      } else {
+        const resp = await api_request(`organizations`, {
+          page: page,
+          limit: limit,
+        });
+        return resp.organizations;
+      }
     } catch (error) {
       console.log(error);
     }

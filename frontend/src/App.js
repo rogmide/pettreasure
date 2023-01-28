@@ -9,6 +9,7 @@ import PetTypeModal from "./Modals/PetTypeModal";
 function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useLocalStore("token");
+  const [zip_code, setZipCode] = useLocalStore("zip_code");
 
   useEffect(
     function loadUserInfo() {
@@ -17,7 +18,9 @@ function App() {
           try {
             let { username } = jwtDecode(token);
             PetTreasureApi.token = token;
-            setCurrUser(await PetTreasureApi.getUser(username));
+            let user = await PetTreasureApi.getUser(username);
+            setCurrUser(user);
+            setZipCode(user.zip_code);
           } catch (error) {
             console.log(error);
           }
@@ -40,7 +43,7 @@ function App() {
 
   async function signup(info) {
     try {
-      console.log(info)
+      console.log(info);
       let token = await PetTreasureApi.signup(info);
       setToken(token);
       return true;
@@ -53,10 +56,11 @@ function App() {
   const logout = () => {
     setCurrUser(null);
     setToken(null);
+    setZipCode(null);
   };
 
   return (
-    <UserContext.Provider value={{ currUser, logout, setCurrUser }}>
+    <UserContext.Provider value={{ currUser, logout, setCurrUser, zip_code }}>
       <Routes_Base login={login} signup={signup} />
     </UserContext.Provider>
   );

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PetTreasureApi from "../API/Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./OrganizationsList.css";
 import { Link } from "react-router-dom";
+import UserContext from "../UseContext";
 
 const Organizations = () => {
   const [orgs, setOrgs] = useState([]);
   const [pageCount, setPageCount] = useState(1);
-
+  const { zip_code } = useContext(UserContext);
 
   useEffect(
     function PreLoadInfo() {
       async function getInitialOrgs() {
-        getOrgs(100);
+        getOrgs(100, zip_code);
       }
       getInitialOrgs();
     },
@@ -21,28 +22,15 @@ const Organizations = () => {
     []
   );
 
-  async function getOrgs(limit = 20) {
+  async function getOrgs(limit = 20, zip_code) {
     try {
       // HERE HAD TO WORK WITH LOCATION USER LOCATION
       // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
       // NEED TO STAR WORKING ON THAT ASAP
 
-      let resp = await PetTreasureApi.getOrgs(limit, 1, "33511");
+      let resp = await PetTreasureApi.getOrgs(limit, 1, zip_code);
       setPageCount(1);
       setOrgs(resp);
-    } catch (errors) {
-      console.log(errors);
-    }
-  }
-
-  async function loadMore(limit = 20) {
-    try {
-      // HERE HAD TO WORK WITH LOCATION USER LOCATION
-      // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
-      // NEED TO STAR WORKING ON THAT ASAP
-      let resp = await PetTreasureApi.getOrgs(limit, pageCount + 1, "33511");
-      setPageCount(pageCount + 1);
-      setOrgs([...orgs, ...resp]);
     } catch (errors) {
       console.log(errors);
     }

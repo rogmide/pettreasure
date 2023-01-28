@@ -80,8 +80,6 @@ class User {
 
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
 
-    console.log(zip_code);
-
     const result = await db.query(
       `INSERT INTO users
            (username,
@@ -142,7 +140,8 @@ class User {
                   first_name AS "firstName",
                   last_name AS "lastName",
                   email,
-                  is_admin AS "isAdmin"
+                  is_admin AS "isAdmin",
+                  zip_code
            FROM users
            WHERE username = $1`,
       [username]
