@@ -2,8 +2,9 @@
   position: absolute;
   right: -1px;
   top: -1px;
-  border-bottom-left-radius: 20px;
-  border-top-right-radius: 3px;
+  /* border-bottom-left-radius: 5px;
+  border-top-right-radius: 3px; */
+  border-radius: 5px;
   background-color: white;
   box-shadow: none;
   border: 1px solid black;
