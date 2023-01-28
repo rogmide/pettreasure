@@ -8,7 +8,6 @@ import UserContext from "../UseContext";
 
 const Organizations = () => {
   const [orgs, setOrgs] = useState([]);
-  const [pageCount, setPageCount] = useState(1);
   const { zip_code } = useContext(UserContext);
 
   useEffect(
@@ -29,7 +28,7 @@ const Organizations = () => {
       // NEED TO STAR WORKING ON THAT ASAP
 
       let resp = await PetTreasureApi.getOrgs(limit, 1, zip_code);
-      setPageCount(1);
+
       setOrgs(resp);
     } catch (errors) {
       console.log(errors);

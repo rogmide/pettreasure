@@ -63,7 +63,7 @@ const PetList = ({ currType, org_id }) => {
         limit,
         type,
         pageCount + 1,
-        "33511"
+        zip_code
       );
       setPageCount(pageCount + 1);
       setPets([...pets, ...resp]);
