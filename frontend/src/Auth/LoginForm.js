@@ -67,7 +67,7 @@ const LoginForm = ({ login }) => {
           ></input>
           <br></br>
           <div>
-            <button id="closeModal" className="btn nav-btn float-right">
+            <button className="btn nav-btn btnLogin float-right">
               Submit
             </button>
           </div>

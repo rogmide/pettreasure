@@ -15,6 +15,7 @@ import PetDetails from "../Pet/PetDetails";
 import OrganizationDetails from "../Organizations/OrganizationDetails";
 import "./Routes_Base.css";
 import LoginModal from "../Modals/LoginModal";
+import SignUpModal from "../Modals/SignUpModal";
 
 function Routes_Base({ login, signup }) {
   const { currUser } = useContext(UserContext);
@@ -34,11 +35,12 @@ function Routes_Base({ login, signup }) {
     <BrowserRouter>
       <PetTypeModal />
       <LoginModal login={login} />
+      <SignUpModal signup={signup} />
       <NavBar />
       <div className="container MainContent">
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
-          <Route
+          {/* <Route
             exact
             path="/login"
             element={<LoginForm login={login} />}
@@ -47,7 +49,7 @@ function Routes_Base({ login, signup }) {
             exact
             path="/signup"
             element={<SignUpForm signup={signup} />}
-          ></Route>
+          ></Route> */}
           <Route exact path="/aboutus" element={<AboutUs />}></Route>
           <Route
             exact

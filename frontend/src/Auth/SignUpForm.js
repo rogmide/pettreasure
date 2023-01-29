@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./SignUpForm.css";
 import { Navigate } from "react-router-dom";
+import $ from "jquery";
 
 const SignUpForm = ({ signup }) => {
   const INITIAL_STATE = {
-    username: "",
-    password: "",
+    username_SignUp: "",
+    password_SignUp: "",
     password1: "",
     firstName: "",
     lastName: "",
@@ -26,12 +27,24 @@ const SignUpForm = ({ signup }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (formData.password !== formData.password1) {
+    if (formData.password_SignUp !== formData.password1) {
       setError("Passwords do NOT match");
       return;
     }
     delete formData.password1;
-    const resp = await signup({ ...formData });
+    let data = {
+      username: formData.username_SignUp,
+      password: formData.password_SignUp,
+      ...formData,
+    };
+    delete data.username_SignUp;
+    delete data.password_SignUp;
+
+    const resp = await signup({ ...data });
+    if (resp === true) {
+      $("#closeBtnSignUp").trigger("click");
+      return;
+    }
     setError(resp);
   }
 
@@ -62,31 +75,31 @@ const SignUpForm = ({ signup }) => {
         )}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username: </label>
+            <label htmlFor="username_SignUp">Username: </label>
             <input
               className="form-control"
               required
-              id="username"
+              id="username_SignUp"
               type="text"
-              name="username"
+              name="username_SignUp"
               placeholder="Username"
-              value={formData.username}
+              value={formData.username_SignUp}
               onChange={handleChange}
             ></input>
           </div>
-          <div className="pwdHolder">
+          <div className="">
             <div className="form-group">
-              <label htmlFor="password">Password: </label>
+              <label htmlFor="password_SignUp">Password: </label>
               <input
                 className="form-control"
                 required
-                id="password"
+                id="password_SignUp"
                 type="password"
-                name="password"
+                name="password_SignUp"
                 placeholder="Password"
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$"
                 onInvalid={erroMsg}
-                value={formData.password}
+                value={formData.password_SignUp}
                 onChange={handleChange}
               ></input>
               <label htmlFor="password1">Confirm Password: </label>
@@ -158,7 +171,7 @@ const SignUpForm = ({ signup }) => {
             ></input>
           </div>
           <br></br>
-          <button className="btn btn-secondary float-right">Submit</button>
+          <button className="btn nav-btn btnSignUp float-right">Submit</button>
         </form>
       </div>
     </>

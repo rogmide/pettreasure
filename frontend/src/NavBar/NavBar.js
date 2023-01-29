@@ -89,9 +89,9 @@ const NoUserLogIn = () => {
             </NavLink>
             <NavLink
               data-toggle="modal"
-              data-target="#loginFormModal"
+              data-target="#signupFormModal"
               className="nav-link active dropMenuItem"
-              to="/signup"
+              // to="/signup"
             >
               Sign Up
             </NavLink>
