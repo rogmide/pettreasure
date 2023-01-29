@@ -7,6 +7,8 @@ import {
   faHippo,
   faCampground,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const HomeMiddle = () => {
   return (
@@ -27,13 +29,32 @@ const HomeMiddle = () => {
           <div className="iconHolders">
             <MiddleIcon type={faDog} linkTo="/gallery/dogs" animal="Dogs" />
             <MiddleIcon type={faCat} linkTo="/gallery/cats" animal="Cats" />
-            <a data-toggle="modal" data-target="#exampleModalCenter">
-              <MiddleIcon
-                type={faHippo}
-                // linkTo="/gallery/others"
-                animal="Others"
-              />
-            </a>
+            <div data-toggle="modal" data-target="#exampleModalCenter">
+              <button
+                className="linkHolder"
+                // to={linkTo}
+                // onClick="$('.modal').modal('hide')"
+              >
+                <div className="iconHolder">
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <FontAwesomeIcon
+                      className="searchIcon"
+                      style={{ color: "#f36250" }}
+                      icon={faHippo}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginTop: "10px",
+                    }}
+                  >
+                    <p style={{ marginTop: "15px" }}>Others</p>
+                  </div>
+                </div>
+              </button>
+            </div>
             <MiddleIcon
               type={faCampground}
               linkTo="/shelters"
