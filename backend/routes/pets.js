@@ -79,4 +79,14 @@ router.get("/removefavorite", async function (req, res, next) {
   }
 });
 
+router.get("/allfavoritepet", async function (req, res, next) {
+  const { user_id } = req.query;
+  try {
+    const pets = await Pet.GetAllFavoritePet(user_id);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

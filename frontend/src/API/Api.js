@@ -89,6 +89,14 @@ class PetTreasureApi {
     return res;
   }
 
+  // Request to GET all favorite pet in backend DB
+  static async GetAllFavoritePet(user_id) {
+    let res = await this.request(`pets/allfavoritepet`, {
+      user_id: user_id,
+    });
+    return res;
+  }
+
   //######################################################################
   // End Pets Section
   //######################################################################

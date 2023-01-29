@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SearchForm from "../CommunComponent/SearchForm";
 
-const SearchHeartIcons = () => {
+const SearchHeartIcons = (currUser) => {
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -35,18 +35,31 @@ const SearchHeartIcons = () => {
             </div>
           </div>
         </div>
-        <NavLink className="nav-link mouseOverIcon" to="/login">
-          <FontAwesomeIcon
-            style={{ color: "5c717a", fontSize: "18px" }}
-            icon={faHeart}
-          />
-        </NavLink>
+        {currUser ? (
+          <NavLink className="nav-link mouseOverIcon" to="/favoritepets">
+            <FontAwesomeIcon
+              style={{ color: "5c717a", fontSize: "18px" }}
+              icon={faHeart}
+            />
+          </NavLink>
+        ) : (
+          <NavLink
+            className="nav-link mouseOverIcon"
+            data-toggle="modal"
+            data-target="#loginFormModal"
+          >
+            <FontAwesomeIcon
+              style={{ color: "5c717a", fontSize: "18px" }}
+              icon={faHeart}
+            />
+          </NavLink>
+        )}
       </div>
     </>
   );
 };
 
-const NoUserLogIn = () => {
+const NoUserLogIn = (currUser) => {
   return (
     // <ul className="navbar-nav ml-auto iconSearch">
     //   <div className="bigScreen">{SearchHeartIcons()}</div>
@@ -62,7 +75,7 @@ const NoUserLogIn = () => {
     //   </li>
     // </ul>
     <ul className="navbar-nav ml-auto iconSearch">
-      <li className="nav-item mr-4 bigScreen">{SearchHeartIcons()}</li>
+      <li className="nav-item mr-4 bigScreen">{SearchHeartIcons(currUser)}</li>
       <div className="dropdown">
         <button
           className="dropdown-toggle nav-btn"
@@ -102,10 +115,10 @@ const NoUserLogIn = () => {
   );
 };
 
-const isLogIn = (name, logout) => {
+const isLogIn = (name, logout, currUser) => {
   return (
     <ul className="navbar-nav ml-auto iconSearch">
-      <li className="nav-item mr-4 bigScreen">{SearchHeartIcons()}</li>
+      <li className="nav-item mr-4 bigScreen">{SearchHeartIcons(currUser)}</li>
       <div className="dropdown">
         <button
           className="dropdown-toggle nav-btn"
@@ -194,7 +207,7 @@ const NavBar = () => {
       </Link>
 
       <div className="smallScreen" style={{ display: "flex" }}>
-        {SearchHeartIcons()}
+        {SearchHeartIcons(currUser)}
       </div>
 
       <button
@@ -207,7 +220,9 @@ const NavBar = () => {
       </button>
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         {middleMenu()}
-        {currUser ? isLogIn(currUser.firstName, logout) : NoUserLogIn()}
+        {currUser
+          ? isLogIn(currUser.firstName, logout, currUser)
+          : NoUserLogIn(currUser)}
       </div>
     </nav>
   );

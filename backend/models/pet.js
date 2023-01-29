@@ -59,6 +59,20 @@ class Pet {
     return fav;
   }
 
+  // Get the all favorite pets from local DB
+  static async GetAllFavoritePet(user_id) {
+    const favPets = await db.query(
+      `SELECT user_id, pet_id
+             FROM favorite
+             WHERE user_id = $1`,
+      [user_id]
+    );
+
+    const fav = favPets.rows;
+
+    return fav;
+  }
+
   // Add Favorite pet to local DB
   static async setIsFavorite(user_id, pet_id) {
     const favPets = await db.query(

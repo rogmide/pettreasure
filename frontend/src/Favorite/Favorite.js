@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartBroken, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import "./Favorite.css";
 import UserContext from "../UseContext";
 import PetTreasureApi from "../API/Api";

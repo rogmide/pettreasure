@@ -16,6 +16,7 @@ import OrganizationDetails from "../Organizations/OrganizationDetails";
 import "./Routes_Base.css";
 import LoginModal from "../Modals/LoginModal";
 import SignUpModal from "../Modals/SignUpModal";
+import FavoritePetList from "../Favorite/FavoritePetList";
 
 function Routes_Base({ login, signup }) {
   const { currUser } = useContext(UserContext);
@@ -40,12 +41,12 @@ function Routes_Base({ login, signup }) {
       <div className="container MainContent">
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
-          {/* <Route
-            exact
-            path="/login"
-            element={<LoginForm login={login} />}
-          ></Route>
           <Route
+            exact
+            path="/favoritepets"
+            element={<FavoritePetList />}
+          ></Route>
+          {/* <Route
             exact
             path="/signup"
             element={<SignUpForm signup={signup} />}
