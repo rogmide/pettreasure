@@ -79,10 +79,20 @@ const NoUserLogIn = () => {
           aria-labelledby="dropdownMenuButton"
         >
           <div className="dropMenuItemHolder">
-            <NavLink className="nav-link active dropMenuItem" to="/login">
+            <NavLink
+              data-toggle="modal"
+              data-target="#loginFormModal"
+              className="nav-link active dropMenuItem"
+              // to="/login"
+            >
               Login
             </NavLink>
-            <NavLink className="nav-link active dropMenuItem" to="/signup">
+            <NavLink
+              data-toggle="modal"
+              data-target="#loginFormModal"
+              className="nav-link active dropMenuItem"
+              to="/signup"
+            >
               Sign Up
             </NavLink>
           </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./LoginForm.css";
 import { Navigate } from "react-router-dom";
+import $ from "jquery";
 
 const LoginForm = ({ login }) => {
   const INITIAL_STATE = {
@@ -21,6 +22,10 @@ const LoginForm = ({ login }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     const resp = await login({ ...formData });
+    if (resp === true) {
+      $("#closeBtn").trigger("click");
+      return;
+    }
     setError(resp);
   }
 
@@ -61,7 +66,11 @@ const LoginForm = ({ login }) => {
             onChange={handleChange}
           ></input>
           <br></br>
-          <button className="btn btn-secondary float-right">Submit</button>
+          <div>
+            <button id="closeModal" className="btn nav-btn float-right">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>

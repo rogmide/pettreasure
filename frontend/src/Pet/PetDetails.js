@@ -47,13 +47,6 @@ const PetDetails = () => {
             <div className="nameFavHolder">
               <h3 className="petName1">{pet.name}</h3>
 
-              {/* BROKEN HEAR FOR WHEN THE USER HAS THE PET AS NO FAVORITE PET
-                  THE IDEA IS MAKE THE HARD HOLDE WITH MORE EFFECTS WHEN IS FAV */}
-              {/* WHEN SEND FOR REMOVE PET FROM DB GIVE ME A ERROR AND DONT UPDATE THE COMPONETN
-              NEED TO FIND OUT WHAT IS GOING ON THERE  */}
-
-              {/* NEXXT STEP WORKING ON FAVORITE LIST FOR USER LOGIN */}
-              {/* FIX LOGIN AND REGISTRATION */}
               <div style={{ position: "relative" }}>
                 {currUser ? <Favorite pet={pet} /> : ""}
               </div>

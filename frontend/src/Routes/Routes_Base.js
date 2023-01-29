@@ -14,6 +14,7 @@ import PetTypeModal from "../Modals/PetTypeModal";
 import PetDetails from "../Pet/PetDetails";
 import OrganizationDetails from "../Organizations/OrganizationDetails";
 import "./Routes_Base.css";
+import LoginModal from "../Modals/LoginModal";
 
 function Routes_Base({ login, signup }) {
   const { currUser } = useContext(UserContext);
@@ -32,6 +33,7 @@ function Routes_Base({ login, signup }) {
   return (
     <BrowserRouter>
       <PetTypeModal />
+      <LoginModal login={login} />
       <NavBar />
       <div className="container MainContent">
         <Routes>
