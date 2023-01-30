@@ -20,21 +20,21 @@ class Api_Helper {
     const headers = { Authorization: `Bearer ${api_token}` };
     const params = method === "get" ? data : {};
 
-    // Check for If Request is Made to the API before
-    // if true we use the local DB response if is not more old than 3 hours
-    if (method === "get") {
-      const resp = await Api_Helper.checkForRequest(
-        url,
-        data,
-        method,
-        headers,
-        params
-      );
-      console.log(resp);
-      return resp;
-    }
-
     try {
+      // Check for If Request is Made to the API before
+      // if true we use the local DB response if is not more old than 3 hours
+      if (method === "get") {
+        const resp = await Api_Helper.checkForRequest(
+          url,
+          data,
+          method,
+          headers,
+          params
+        );
+        console.log(resp);
+        return resp;
+      }
+
       if (method === "post") {
         return (await axios({ url, method, params, data, headers })).data;
       } else {
