@@ -24,8 +24,19 @@ CREATE TABLE config (
 CREATE TABLE favorite (
   user_id varchar(25) REFERENCES users ON DELETE CASCADE,
   pet_id integer,
+  pet_info json NOT NULL,
   PRIMARY KEY (user_id, pet_id)
 );
+
+CREATE TABLE
+CACHE (
+  request_url text PRIMARY KEY,
+  request_response json NOT NULL,
+  request_time date NOT NULL
+);
+
+CREATE INDEX request_url ON
+CACHE (request_url);
 
 -- CREATE TABLE applications (
 --   username VARCHAR(25)

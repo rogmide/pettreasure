@@ -6,8 +6,9 @@ import PetTreasureApi from "../API/Api";
 
 const FavoritePetList = () => {
   const [pets, setPets] = useState([]);
-  let pet = {};
+  const [petsFav, setPetsFav] = useState();
   const { currUser } = useContext(UserContext);
+  let tempPets = [];
 
   useEffect(
     function PreLoadInfo() {
@@ -25,23 +26,26 @@ const FavoritePetList = () => {
       let resp = await PetTreasureApi.GetAllFavoritePet(
         currUser ? currUser.username : undefined
       );
-
-      // Working on this got limit of request per day
-      if (resp.pets.length != 0) {
-        let tempPets = [];
-        let count = 0;
-        resp.pets.forEach(async (pet) => {
-          let tempPet = await PetTreasureApi.getPetById(pet.pet_id);
-          tempPets.push(tempPet);
-          console.log(count + 1);
-        });
-
-        console.log(tempPets);
-        // setPets(tempPets);
-      }
+      getPetsFromAPI(resp.pets);
     } catch (errors) {
       console.log(errors);
     }
+  }
+
+  async function getPetsFromAPI(local_pets) {
+    let a = new Promise((resolve, reject) => {
+      local_pets.map(async (p) => {
+        console.log(p.pet_id);
+        try {
+          let pet = await PetTreasureApi.getPetById(p.pet_id);
+          resolve(pet);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+
+    a.then((pet) => tempPets.push(pet)).finally((p) => console.log(tempPets)); 
   }
 
   return (
@@ -53,11 +57,19 @@ const FavoritePetList = () => {
         <div className="petHolder">
           {pets ? (
             pets.map((p) => (
-              <GalleryPetCard
-                key={uuidv4()}
-                pet={p}
-                linkTo={`/animal/${p.id}`}
-              />
+              <>
+                {p ? (
+                  <div>
+                    <GalleryPetCard
+                      key={uuidv4()}
+                      pet={p}
+                      linkTo={`/animal/${p.id}`}
+                    />{" "}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </>
             ))
           ) : (
             <div className="loader"></div>

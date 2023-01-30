@@ -20,6 +20,8 @@ class Api_Helper {
     const headers = { Authorization: `Bearer ${api_token}` };
     const params = method === "get" ? data : {};
 
+    console.log("Here: ",url);
+
     try {
       if (method === "post") {
         return (await axios({ url, method, params, data, headers })).data;
