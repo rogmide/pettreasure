@@ -20,7 +20,19 @@ class Api_Helper {
     const headers = { Authorization: `Bearer ${api_token}` };
     const params = method === "get" ? data : {};
 
-    console.log("Here: ",url);
+    // Check for If Request is Made to the API before
+    // if true we use the local DB response if is not more old than 3 hours
+    if (method === "get") {
+      const resp = await Api_Helper.checkForRequest(
+        url,
+        data,
+        method,
+        headers,
+        params
+      );
+      console.log(resp);
+      return resp;
+    }
 
     try {
       if (method === "post") {
@@ -41,6 +53,7 @@ class Api_Helper {
     }
   }
 
+  // Get token for the API from LOCAL DB
   static async getApiToken() {
     const result = await db.query(
       "SELECT api_key, secret_key, api_token from config"
@@ -51,10 +64,10 @@ class Api_Helper {
     return api_token;
   }
 
+  // Getting current information,{ api_key, secret_key } from DataBase
+  // To be use to get a new Api token
+  // Update the token in local DB to be use for all request
   static async updateApiToken() {
-    // Getting current information,{ api_key, secret_key } from DataBase
-    // To be use to get a new Api token
-
     const configData = await db.query(
       "SELECT api_key, secret_key, api_token from config"
     );
@@ -80,6 +93,51 @@ class Api_Helper {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  static async checkForRequest(url, data, method, headers, params) {
+    const request = await db.query(
+      `SELECT request_url, request_response, request_time 
+       FROM CACHE
+       WHERE request_url = $1 and request_time > now() - '3 hours'::interval`,
+      [url + JSON.stringify(data) + method]
+    );
+
+    if (request.rows.length === 0) {
+      const resp = (await axios({ url, method, params, headers })).data;
+      await Api_Helper.createCache(url + JSON.stringify(params) + method, resp);
+      return resp;
+    } else {
+      return JSON.parse(request.rows[0].request_response);
+    }
+  }
+
+  static async createCache(url, response = "", time = new Date()) {
+    const resp = await db.query(
+      `INSERT INTO CACHE (request_url, request_response, request_time)
+       VALUES ($1, $2, $3) 
+       ON CONFLICT (request_url)
+       DO 
+       UPDATE SET request_response = $2, request_time = $3
+       RETURNING request_url, request_response, request_time`,
+      [url, JSON.stringify(response), time]
+    );
+  }
+
+  static getTime() {
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date + " " + time;
+
+    console.log(dateTime);
+    return dateTime;
   }
 }
 

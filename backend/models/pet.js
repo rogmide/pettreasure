@@ -76,10 +76,10 @@ class Pet {
   // Add Favorite pet to local DB
   static async setIsFavorite(user_id, pet_id) {
     const favPets = await db.query(
-      `INSERT INTO favorite (user_id, pet_id)
-       VALUES ($1, $2) 
-       RETURNING user_id, pet_id`,
-      [user_id, pet_id]
+      `INSERT INTO favorite (user_id, pet_id, pet_info)
+       VALUES ($1, $2, $3) 
+       RETURNING user_id, pet_id, pet_info`,
+      [user_id, pet_id, {}]
     );
 
     const fav = favPets.rows[0];

@@ -1,10 +1,3 @@
--- CREATE TABLE companies (
---   handle VARCHAR(25) PRIMARY KEY CHECK (handle = lower(handle)),
---   name TEXT UNIQUE NOT NULL,
---   num_employees INTEGER CHECK (num_employees >= 0),
---   description TEXT NOT NULL,
---   logo_url TEXT
--- );
 CREATE TABLE users (
   username varchar(25) PRIMARY KEY,
   password TEXT NOT NULL,
@@ -24,24 +17,17 @@ CREATE TABLE config (
 CREATE TABLE favorite (
   user_id varchar(25) REFERENCES users ON DELETE CASCADE,
   pet_id integer,
-  pet_info json NOT NULL,
+  pet_info text NOT NULL,
   PRIMARY KEY (user_id, pet_id)
 );
 
 CREATE TABLE
 CACHE (
   request_url text PRIMARY KEY,
-  request_response json NOT NULL,
-  request_time date NOT NULL
+  request_response text NOT NULL,
+  request_time timestamp NOT NULL
 );
 
 CREATE INDEX request_url ON
 CACHE (request_url);
 
--- CREATE TABLE applications (
---   username VARCHAR(25)
---     REFERENCES users ON DELETE CASCADE,
---   job_id INTEGER
---     REFERENCES jobs ON DELETE CASCADE,
---   PRIMARY KEY (username, job_id)
--- );
