@@ -34,7 +34,7 @@ const CompanySearch = ({ search }) => {
             <input
               style={{ padding: "10px", marginLeft: "5px", minWidth: "200px" }}
               className="form-control"
-              id="name"
+              // id="name"
               type="text"
               name="name"
               placeholder=""
