@@ -1,7 +1,7 @@
 .fav_icon {
   position: absolute;
-  right: -1px;
-  top: -1px;
+  right: 0;
+  top: 0;
   /* border-bottom-left-radius: 5px;
   border-top-right-radius: 3px; */
   border-radius: 5px;

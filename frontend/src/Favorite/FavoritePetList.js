@@ -3,10 +3,10 @@ import UserContext from "../UseContext";
 import GalleryPetCard from "../Gallery/GalleryPetCard";
 import { v4 as uuidv4 } from "uuid";
 import PetTreasureApi from "../API/Api";
+import "./FavoritePetList.css";
 
 const FavoritePetList = () => {
   const [pets, setPets] = useState([]);
-  const [petsFav, setPetsFav] = useState();
   const { currUser } = useContext(UserContext);
   let tempPets = [];
 
@@ -26,26 +26,12 @@ const FavoritePetList = () => {
       let resp = await PetTreasureApi.GetAllFavoritePet(
         currUser ? currUser.username : undefined
       );
-      getPetsFromAPI(resp.pets);
+      let tempPets = [];
+      resp.pets.map((p) => tempPets.push(JSON.parse(p.pet_info)));
+      setPets(tempPets);
     } catch (errors) {
       console.log(errors);
     }
-  }
-
-  async function getPetsFromAPI(local_pets) {
-    let a = new Promise((resolve, reject) => {
-      local_pets.map(async (p) => {
-        console.log(p.pet_id);
-        try {
-          let pet = await PetTreasureApi.getPetById(p.pet_id);
-          resolve(pet);
-        } catch (error) {
-          reject(error);
-        }
-      });
-    });
-
-    a.then((pet) => tempPets.push(pet)).finally((p) => console.log(tempPets)); 
   }
 
   return (
@@ -56,21 +42,17 @@ const FavoritePetList = () => {
         </h3>
         <div className="petHolder">
           {pets ? (
-            pets.map((p) => (
-              <>
-                {p ? (
-                  <div>
-                    <GalleryPetCard
-                      key={uuidv4()}
-                      pet={p}
-                      linkTo={`/animal/${p.id}`}
-                    />{" "}
-                  </div>
-                ) : (
-                  ""
-                )}
-              </>
-            ))
+            pets.map((p) =>
+              p ? (
+                <GalleryPetCard
+                  key={uuidv4()}
+                  pet={p}
+                  linkTo={`/animal/${p.id}`}
+                />
+              ) : (
+                ""
+              )
+            )
           ) : (
             <div className="loader"></div>
           )}

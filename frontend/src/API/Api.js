@@ -72,10 +72,11 @@ class PetTreasureApi {
   }
 
   // Request to set favorite pet in backend DB
-  static async setIsFavorite(user_id, pet_id) {
+  static async setIsFavorite(user_id, pet_id, pet) {
     let res = await this.request(`pets/setfavorite`, {
       user_id: user_id,
       pet_id: pet_id,
+      pet: pet,
     });
     return res.pets;
   }

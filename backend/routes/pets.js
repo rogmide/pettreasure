@@ -60,9 +60,9 @@ router.get("/isfavorite", async function (req, res, next) {
 });
 
 router.get("/setfavorite", async function (req, res, next) {
-  const { user_id, pet_id } = req.query;
+  const { user_id, pet_id, pet } = req.query;
   try {
-    const pets = await Pet.setIsFavorite(user_id, pet_id);
+    const pets = await Pet.setIsFavorite(user_id, pet_id, pet);
     return res.json({ pets });
   } catch (err) {
     return next(err);

@@ -38,7 +38,8 @@ const Favorite = ({ pet }) => {
     try {
       let resp = await PetTreasureApi.setIsFavorite(
         currUser ? currUser.username : undefined,
-        pet.id
+        pet.id,
+        pet
       );
       if (resp) {
         setIsFavorite(!isFavorite);

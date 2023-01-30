@@ -62,7 +62,7 @@ class Pet {
   // Get the all favorite pets from local DB
   static async GetAllFavoritePet(user_id) {
     const favPets = await db.query(
-      `SELECT user_id, pet_id
+      `SELECT user_id, pet_id, pet_info
              FROM favorite
              WHERE user_id = $1`,
       [user_id]
@@ -74,12 +74,12 @@ class Pet {
   }
 
   // Add Favorite pet to local DB
-  static async setIsFavorite(user_id, pet_id) {
+  static async setIsFavorite(user_id, pet_id, pet) {
     const favPets = await db.query(
       `INSERT INTO favorite (user_id, pet_id, pet_info)
        VALUES ($1, $2, $3) 
        RETURNING user_id, pet_id, pet_info`,
-      [user_id, pet_id, {}]
+      [user_id, pet_id, JSON.stringify(pet)]
     );
 
     const fav = favPets.rows[0];
