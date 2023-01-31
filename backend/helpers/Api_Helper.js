@@ -5,8 +5,6 @@ const axios = require("axios");
 const { NotFoundError } = require("../expressError");
 const BASE_URL = "https://api.petfinder.com/v2/";
 
-/** Function to update token in case of expire */
-
 class Api_Helper {
   static async api_request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -136,7 +134,6 @@ class Api_Helper {
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let dateTime = date + " " + time;
 
-    console.log(dateTime);
     return dateTime;
   }
 }

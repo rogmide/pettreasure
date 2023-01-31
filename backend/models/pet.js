@@ -18,8 +18,6 @@ class Pet {
     limit = 1,
     animals = ["dog", "cat", "bird"].sort(() => 0.5 - Math.random())[0]
   ) {
-    console.log(limit);
-    console.log(animals);
     try {
       // const animals = ["dog", "cat", "bird"].sort(() => 0.5 - Math.random());
 
