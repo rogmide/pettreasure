@@ -151,20 +151,6 @@ class User {
 
     if (!user) throw new NotFoundError(`No user: ${username}`);
 
-    // #########
-    // OJO - WE DONT NEED APPLICATIONS RIGHT NOW
-    // #########
-
-    // const userApplicationsRes = await db.query(
-    //       `SELECT a.job_id
-    //        FROM applications AS a
-    //        WHERE a.username = $1`, [username]);
-    // user.applications = userApplicationsRes.rows.map(a => a.job_id);
-
-    // #########
-    // OJO - WE DONT NEED APPLICATIONS RIGHT NOW
-    // #########
-
     return user;
   }
 

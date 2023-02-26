@@ -11,11 +11,13 @@ const GalleryPetCard = ({ pet, linkTo }) => {
   // On Click to see a Pet Details add that pet to resent pet view.
   async function addRecentPetView() {
     try {
-      let resp = await PetTreasureApi.addRecentPetView(
-        currUser ? currUser.username : undefined,
-        pet.id,
-        pet
-      );
+      if (currUser) {
+        let resp = await PetTreasureApi.addRecentPetView(
+          currUser ? currUser.username : undefined,
+          pet.id,
+          pet
+        );
+      }
     } catch (error) {
       console.log(error);
     }

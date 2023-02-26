@@ -29,7 +29,6 @@ class Api_Helper {
           headers,
           params
         );
-        console.log(resp);
         return resp;
       }
 

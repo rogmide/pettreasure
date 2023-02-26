@@ -2,8 +2,7 @@
 
 const db = require("../db");
 const { NotFoundError } = require("../expressError");
-const { sqlForPartialUpdate } = require("../helpers/sql");
-const { api_request, updateApiToken } = require("../helpers/Api_Helper");
+const { api_request } = require("../helpers/Api_Helper");
 
 class Pet {
   // ########################################################################
@@ -13,14 +12,12 @@ class Pet {
   //      limit: is the limit of pet that the request is going to bring back default 1
   //      animals: is the type of animal that the request is going to bring back
   //               default is a random animal from ["dog", "cat", "bird"].
-
+  //
   static async getRandomPet(
     limit = 1,
     animals = ["dog", "cat", "bird"].sort(() => 0.5 - Math.random())[0]
   ) {
     try {
-      // const animals = ["dog", "cat", "bird"].sort(() => 0.5 - Math.random());
-
       const reps = await api_request("animals", {
         type: animals === "NoType" ? "" : animals,
         page: Math.floor(Math.random() * 20 + 1),
@@ -34,6 +31,12 @@ class Pet {
     }
   }
 
+  // ########################################################################
+  // getPetById: Request to the API to get a Pet By Id
+  //
+  // Params:
+  //        pet_id: pet id to request that pet
+  //
   static async getPetById(pet_id) {
     try {
       const reps = await api_request(`animals/${pet_id}`);
@@ -43,7 +46,12 @@ class Pet {
     }
   }
 
-  // Get the favorite pet from local DB
+  // ########################################################################
+  // getIsFavorite: Get the favorite pet from local DB
+  // Params:
+  //        pet_id: pet id to request favorite pet for the user
+  //        user_id: user id to request favorite pet for the user
+  //
   static async getIsFavorite(user_id, pet_id) {
     const favPets = await db.query(
       `SELECT user_id, pet_id
@@ -56,8 +64,50 @@ class Pet {
 
     return fav;
   }
+  // ########################################################################
+  // setIsFavorite: Add Favorite pet to local DB
+  // Params:
+  //        pet_id: pet id to request to set favorite pet for the user
+  //        user_id: user id to request to set favorite pet for the user
+  //        pet: is the pet info that is going to be save into the local db
+  //
+  static async setIsFavorite(user_id, pet_id, pet) {
+    const favPets = await db.query(
+      `INSERT INTO favorite (user_id, pet_id, pet_info)
+         VALUES ($1, $2, $3) 
+         RETURNING user_id, pet_id, pet_info`,
+      [user_id, pet_id, JSON.stringify(pet)]
+    );
 
-  // Get the all favorite pets from local DB
+    const fav = favPets.rows[0];
+
+    return fav;
+  }
+
+  // ########################################################################
+  // removeFavorite: Remove Favorite pet to local DB
+  // Params:
+  //        pet_id: pet id to request to remove favorite pet for the user
+  //        user_id: user id to request to remove favorite pet for the user
+  //
+  static async removeFavorite(user_id, pet_id) {
+    const result = await db.query(
+      `DELETE
+         FROM favorite
+         WHERE user_id = $1 and pet_id = $2
+         RETURNING user_id, pet_id`,
+      [user_id, pet_id]
+    );
+    const resp = result.rows[0];
+
+    if (!resp) throw new NotFoundError(`No Fav Pet Found: ${pet_id}`);
+  }
+
+  // ########################################################################
+  // GetAllFavoritePet: Get the all favorite pets from local DB
+  // Params:
+  //        user_id: user id to request favorite pet for the user
+  //
   static async GetAllFavoritePet(user_id) {
     const favPets = await db.query(
       `SELECT user_id, pet_id, pet_info
@@ -71,34 +121,11 @@ class Pet {
     return fav;
   }
 
-  // Add Favorite pet to local DB
-  static async setIsFavorite(user_id, pet_id, pet) {
-    const favPets = await db.query(
-      `INSERT INTO favorite (user_id, pet_id, pet_info)
-       VALUES ($1, $2, $3) 
-       RETURNING user_id, pet_id, pet_info`,
-      [user_id, pet_id, JSON.stringify(pet)]
-    );
-
-    const fav = favPets.rows[0];
-
-    return fav;
-  }
-  // Add Favorite pet to local DB
-  static async removeFavorite(user_id, pet_id) {
-    const result = await db.query(
-      `DELETE
-       FROM favorite
-       WHERE user_id = $1 and pet_id = $2
-       RETURNING user_id, pet_id`,
-      [user_id, pet_id]
-    );
-    const resp = result.rows[0];
-
-    if (!resp) throw new NotFoundError(`No Fav Pet Found: ${pet_id}`);
-  }
-
-  // Get the all recent pets view from local DB
+  // ########################################################################
+  // GetAllRecentPetView: Get the all recent pets view from local DB
+  // Params:
+  //        user_id: user id to request recent viewed pets for the user
+  //
   static async GetAllRecentPetView(user_id) {
     const recPets = await db.query(
       `SELECT user_id, pet_id, pet_info
@@ -112,8 +139,27 @@ class Pet {
     return rec;
   }
 
-  // Add recent pet view to local DB
+  // ########################################################################
+  // addRecentPetView: Add recent pet view to local DB
+  // Params:
+  //        pet_id: pet id to request to set favorite pet for the user
+  //        user_id: user id to request to set favorite pet for the user
+  //        pet: is the pet info that is going to be save into the local db
+  // In case of conflit the the pet will be updated instead
+  //
   static async addRecentPetView(user_id, pet_id, pet) {
+    const limitPetStore = await Pet.GetAllRecentPetView(user_id);
+
+    // This is a limitation to the user that can only store 5 recent pets viewed
+    if (limitPetStore.length > 5) {
+      const result = await db.query(
+        `DELETE
+           FROM recently_view_pet
+           WHERE user_id = $1`,
+        [user_id]
+      );
+    }
+
     const recPets = await db.query(
       `INSERT INTO recently_view_pet (user_id, pet_id, pet_info)
            VALUES ($1, $2, $3) 
@@ -140,7 +186,6 @@ class Pet {
   //            we call 20 pet at the time from the API
   //      location: location is the location that the user enter to show pet that are close to
   //                his/her zip code
-
   //
   static async getPetGallery(
     limit = 20,
@@ -171,6 +216,12 @@ class Pet {
     }
   }
 
+  // ########################################################################
+  // Get organization list from the API,
+  // Params:
+  //      limit: is the limit of pet that the request is going to bring back default 1
+  //      organization: is the id that is going to be use to pull a organization
+  //
   static async galleryForOrg(limit, org_id) {
     try {
       const reps = await api_request(`animals`, {

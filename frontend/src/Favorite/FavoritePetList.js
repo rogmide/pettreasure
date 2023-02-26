@@ -77,7 +77,7 @@ const FavoritePetList = () => {
 
       <div className="petAvailable">
         <h3 className="" style={{ marginLeft: "40px" }}>
-          Recent Pets View
+          Recently Viewed Pets
         </h3>
         <div className="petHolder">
           {recent ? (
