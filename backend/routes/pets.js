@@ -89,4 +89,24 @@ router.get("/allfavoritepet", async function (req, res, next) {
   }
 });
 
+router.get("/allrecentviewpet", async function (req, res, next) {
+  const { user_id } = req.query;
+  try {
+    const pets = await Pet.GetAllRecentPetView(user_id);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+router.get("/addrecentpetview", async function (req, res, next) {
+  const { user_id, pet_id, pet } = req.query;
+  try {
+    const pets = await Pet.addRecentPetView(user_id, pet_id, pet);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

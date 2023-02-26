@@ -3,16 +3,34 @@ import "./GalleryPetCard.css";
 import { Link } from "react-router-dom";
 import UserContext from "../UseContext";
 import Favorite from "../Favorite/Favorite";
+import PetTreasureApi from "../API/Api";
 
 const GalleryPetCard = ({ pet, linkTo }) => {
   const { currUser } = useContext(UserContext);
+
+  // On Click to see a Pet Details add that pet to resent pet view.
+  async function addRecentPetView() {
+    try {
+      let resp = await PetTreasureApi.addRecentPetView(
+        currUser ? currUser.username : undefined,
+        pet.id,
+        pet
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <div>
         <div className="fav_pet" style={{ position: "relative" }}>
           {currUser ? <Favorite pet={pet} /> : ""}
         </div>
-        <Link className="linkHolder" to={linkTo}>
+        <Link
+          className="linkHolder"
+          to={linkTo}
+          onClick={() => addRecentPetView()}
+        >
           <div className="cardMain">
             <div className="backGroundCard2"></div>
             <div className="cardHolder2">

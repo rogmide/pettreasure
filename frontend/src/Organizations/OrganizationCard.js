@@ -9,7 +9,6 @@ import "./OrganizationCard.css";
 import { Link } from "react-router-dom";
 
 const OrganizationCard = ({ org }) => {
-  console.log(org);
   return (
     <>
       {org ? (

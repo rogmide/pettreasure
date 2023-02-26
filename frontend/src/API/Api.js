@@ -98,6 +98,24 @@ class PetTreasureApi {
     return res;
   }
 
+  // Request to get all recent pet view in backend DB
+  static async GetAllRecentPetView(user_id) {
+    let res = await this.request(`pets/allrecentviewpet`, {
+      user_id: user_id,
+    });
+    return res;
+  }
+
+  // Request to set recent pet view pet in backend DB
+  static async addRecentPetView(user_id, pet_id, pet) {
+    let res = await this.request(`pets/addrecentpetview`, {
+      user_id: user_id,
+      pet_id: pet_id,
+      pet: pet,
+    });
+    return res.pets;
+  }
+
   //######################################################################
   // End Pets Section
   //######################################################################

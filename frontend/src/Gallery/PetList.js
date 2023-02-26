@@ -47,7 +47,6 @@ const PetList = ({ currType, org_id }) => {
 
       let resp = await PetTreasureApi.getPetsForOrg(limit, org_id);
       setPageCount(1);
-      console.log(resp);
       setPets(resp);
     } catch (errors) {
       console.log(errors);

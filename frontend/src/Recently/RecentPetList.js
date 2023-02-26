@@ -3,11 +3,9 @@ import UserContext from "../UseContext";
 import GalleryPetCard from "../Gallery/GalleryPetCard";
 import { v4 as uuidv4 } from "uuid";
 import PetTreasureApi from "../API/Api";
-import "./FavoritePetList.css";
 
-const FavoritePetList = () => {
+const RecentPetList = () => {
   const [pets, setPets] = useState([]);
-  const [recent, setRecentPetView] = useState([]);
   const { currUser } = useContext(UserContext);
   let tempPets = [];
 
@@ -24,19 +22,12 @@ const FavoritePetList = () => {
 
   async function getFavPets() {
     try {
-      let resp = await PetTreasureApi.GetAllFavoritePet(
+      let resp = await PetTreasureApi.GetAllRecentPetView(
         currUser ? currUser.username : undefined
       );
-      let respRecent = await PetTreasureApi.GetAllRecentPetView(
-        currUser ? currUser.username : undefined
-      );
-
       let tempPets = [];
-      let tempRecPets = [];
       resp.pets.map((p) => tempPets.push(JSON.parse(p.pet_info)));
-      respRecent.pets.map((p) => tempRecPets.push(JSON.parse(p.pet_info)));
       setPets(tempPets);
-      setRecentPetView(tempRecPets);
     } catch (errors) {
       console.log(errors);
     }
@@ -46,7 +37,7 @@ const FavoritePetList = () => {
     <>
       <div className="petAvailable">
         <h3 className="" style={{ marginLeft: "40px" }}>
-          My Favorites
+          Recently pet view
         </h3>
         <div className="petHolder">
           {pets ? (
@@ -74,39 +65,8 @@ const FavoritePetList = () => {
           }}
         ></div>
       </div>
-
-      <div className="petAvailable">
-        <h3 className="" style={{ marginLeft: "40px" }}>
-          Recent Pets View
-        </h3>
-        <div className="petHolder">
-          {recent ? (
-            recent.map((p) =>
-              p ? (
-                <GalleryPetCard
-                  key={uuidv4()}
-                  pet={p}
-                  linkTo={`/animal/${p.id}`}
-                />
-              ) : (
-                ""
-              )
-            )
-          ) : (
-            <div className="loader"></div>
-          )}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            marginBlock: "40px",
-          }}
-        ></div>
-      </div>
     </>
   );
 };
 
-export default FavoritePetList;
+export default RecentPetList;

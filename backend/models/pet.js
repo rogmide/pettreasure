@@ -98,6 +98,37 @@ class Pet {
     if (!resp) throw new NotFoundError(`No Fav Pet Found: ${pet_id}`);
   }
 
+  // Get the all recent pets view from local DB
+  static async GetAllRecentPetView(user_id) {
+    const recPets = await db.query(
+      `SELECT user_id, pet_id, pet_info
+               FROM recently_view_pet
+               WHERE user_id = $1`,
+      [user_id]
+    );
+
+    const rec = recPets.rows;
+
+    return rec;
+  }
+
+  // Add recent pet view to local DB
+  static async addRecentPetView(user_id, pet_id, pet) {
+    const recPets = await db.query(
+      `INSERT INTO recently_view_pet (user_id, pet_id, pet_info)
+           VALUES ($1, $2, $3) 
+           ON CONFLICT (user_id, pet_id)
+           DO
+           UPDATE SET pet_info = $3
+           RETURNING user_id, pet_id, pet_info`,
+      [user_id, pet_id, JSON.stringify(pet)]
+    );
+
+    const rec = recPets.rows[0];
+
+    return rec;
+  }
+
   // ########################################################################
   // Get pet list from the API,
   // Params:

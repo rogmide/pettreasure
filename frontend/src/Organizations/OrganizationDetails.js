@@ -31,7 +31,6 @@ const OrganizationDetails = () => {
   async function getOrgById() {
     try {
       let resp = await PetTreasureApi.getOrganizationById(org_id);
-      console.log(resp);
       setOrg(resp);
     } catch (errors) {
       console.log(errors);
