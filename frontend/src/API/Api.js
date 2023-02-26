@@ -116,6 +116,17 @@ class PetTreasureApi {
     return res.pets;
   }
 
+  // Request to add comment to a pet for a user
+  static async addCommentForPet(data) {
+    let res = await this.request(`pets/addcommentforpet`, data);
+    return res.pets;
+  }
+
+  static async getCommentForPet(pet_id) {
+    let res = await this.request(`pets/getcommentforpet`, { pet_id: pet_id });
+    return res.pets;
+  }
+
   //######################################################################
   // End Pets Section
   //######################################################################

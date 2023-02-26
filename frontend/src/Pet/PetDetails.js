@@ -7,23 +7,22 @@ import "./PetDetails.css";
 import "../GeneralCSS/Spinner.css";
 import Favorite from "../Favorite/Favorite.js";
 import UserContext from "../UseContext";
+import CommentForm from "../Comments/CommentForm";
+import CommentList from "../Comments/CommentList";
 
 const PetDetails = () => {
   const [pet, setPet] = useState();
   const [org, setOrganization] = useState();
+  const [comment, setComment] = useState();
   const { pet_id } = useParams();
   const { currUser } = useContext(UserContext);
 
-  useEffect(
-    function PreLoadInfo() {
-      async function getInitialPet() {
-        getPetAndOrganization();
-      }
-      getInitialPet();
-    },
-
-    []
-  );
+  useEffect(function PreLoadInfo() {
+    async function getInitialPet() {
+      getPetAndOrganization();
+    }
+    getInitialPet();
+  }, []);
 
   async function getPetAndOrganization() {
     try {
@@ -31,11 +30,18 @@ const PetDetails = () => {
       let respOrg = await PetTreasureApi.getOrganizationById(
         respPet.organization_id
       );
+      let respComment = await PetTreasureApi.getCommentForPet(pet_id);
       setPet(respPet);
       setOrganization(respOrg);
+      setComment(respComment);
     } catch (errors) {
       console.log(errors);
     }
+  }
+
+  async function addCommentForPet(data) {
+    let resp = await PetTreasureApi.addCommentForPet(data);
+    getPetAndOrganization();
   }
 
   return (
@@ -123,6 +129,17 @@ const PetDetails = () => {
         )}
       </div>
       <OrganizationCard org={org} />
+      <CommentList list_msg={comment} />
+      {currUser ? (
+        <CommentForm
+          pet_id={pet_id}
+          pet={pet}
+          user={currUser}
+          addCommentForPet={addCommentForPet}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -109,4 +109,24 @@ router.get("/addrecentpetview", async function (req, res, next) {
   }
 });
 
+router.get("/addcommentforpet", async function (req, res, next) {
+  const data = req.query;
+  try {
+    const pets = await Pet.addCommentForPet(data);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+router.get("/getcommentforpet", async function (req, res, next) {
+  const { pet_id } = req.query;
+  try {
+    const pets = await Pet.getCommentForPet(pet_id);
+    return res.json({ pets });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

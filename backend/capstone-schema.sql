@@ -28,6 +28,17 @@ CREATE TABLE recently_view_pet (
   PRIMARY KEY (user_id, pet_id)
 );
 
+CREATE TABLE pet_comments (
+  msg_id serial,
+  pet_id integer NOT NULL,
+  user_id varchar(25) REFERENCES users ON DELETE CASCADE,
+  pet_info text NOT NULL,
+  msg_title text NOT NULL,
+  msg_body text NOT NULL,
+  msg_time timestamp NOT NULL,
+  PRIMARY KEY (msg_id, pet_id)
+);
+
 CREATE TABLE
 CACHE (
   request_url text PRIMARY KEY,

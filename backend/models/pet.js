@@ -176,6 +176,60 @@ class Pet {
   }
 
   // ########################################################################
+  // addCommentForPet: Add comment for pet view to local DB
+  // Params:
+  //        data: .
+  //              pet_id: pet id to request to set favorite pet for the user
+  //              user_id: user id to request to set favorite pet for the user
+  //              pet_info: is the pet info that is going to be save into the local db
+  //              msg_title: is the title for the msg
+  //              msg_body: body os the msg
+  //        msg_time: is going to be use to get msg using timestamp
+  // In case of conflit the the pet will be updated instead
+  //
+  static async addCommentForPet(data) {
+    const commPets = await db.query(
+      `INSERT INTO pet_comments (pet_id, user_id, pet_info, msg_title, msg_body, msg_time)
+           VALUES ($1, $2, $3, $4, $5, $6) 
+           RETURNING pet_id, user_id, pet_info, msg_title, msg_body, msg_time`,
+      [
+        data.pet_id,
+        data.user_id,
+        JSON.stringify(data.pet_info),
+        data.msg_title,
+        data.msg_body,
+        new Date(),
+      ]
+    );
+
+    const comment = commPets.rows[0];
+
+    return comment;
+  }
+
+  // ########################################################################
+  // getCommentForPet: Request msg store in the local DB
+  //
+  // Params:
+  //        pet_id: pet id to request that pet
+  //
+  static async getCommentForPet(pet_id) {
+    const commPet = await db.query(
+      `SELECT user_id, msg_title, msg_body, msg_time, first_name, last_name
+               FROM pet_comments as pet
+               JOIN users as us 
+               ON us.username = pet.user_id
+               WHERE pet_id = $1
+               ORDER BY msg_time DESC`,
+      [pet_id]
+    );
+
+    const commet = commPet.rows;
+
+    return commet;
+  }
+
+  // ########################################################################
   // Get pet list from the API,
   // Params:
   //      limit: is the limit of pet that the request is going to bring back default 1
