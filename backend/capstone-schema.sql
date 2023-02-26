@@ -21,6 +21,13 @@ CREATE TABLE favorite (
   PRIMARY KEY (user_id, pet_id)
 );
 
+CREATE TABLE recently_view_pet (
+  user_id varchar(25) REFERENCES users ON DELETE CASCADE,
+  pet_id integer,
+  pet_info text NOT NULL,
+  PRIMARY KEY (user_id, pet_id)
+);
+
 CREATE TABLE
 CACHE (
   request_url text PRIMARY KEY,
