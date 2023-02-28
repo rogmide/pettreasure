@@ -9,6 +9,7 @@ import Favorite from "../Favorite/Favorite.js";
 import UserContext from "../UseContext";
 import CommentForm from "../Comments/CommentForm";
 import CommentList from "../Comments/CommentList";
+import { NavLink } from "react-router-dom";
 
 const PetDetails = () => {
   const [pet, setPet] = useState();
@@ -47,7 +48,7 @@ const PetDetails = () => {
   return (
     <>
       <div className="petDetail">
-        <PetPicCarousel pet={pet} />
+        {pet ? <PetPicCarousel pet={pet} /> : ""}
         {pet ? (
           <div className="petDetailText">
             <div className="nameFavHolder">
@@ -138,7 +139,19 @@ const PetDetails = () => {
           addCommentForPet={addCommentForPet}
         />
       ) : (
-        ""
+        <div>
+          <h2>
+            To leave a comment you need to login PetTreasure by clicking the
+            button below.
+          </h2>
+          <button
+            className=""
+            data-toggle="modal"
+            data-target="#loginFormModal"
+          >
+            Login
+          </button>
+        </div>
       )}
     </>
   );

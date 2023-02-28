@@ -5,6 +5,7 @@ import "./PetPicCarousel.css";
 import { v4 as uuidv4 } from "uuid";
 
 const PetPicCarousel = ({ pet }) => {
+  console.log(pet);
   return (
     <>
       {pet && pet.primary_photo_cropped ? (
@@ -40,7 +41,7 @@ const PetPicCarousel = ({ pet }) => {
             */}
 
               <div key={uuidv4()} className="carousel-item active">
-                <img src={pet.photos.pop().full} alt="first pic" />
+                <img src={pet.photos[0].full} alt="first pic" />
               </div>
 
               {pet.photos.map((pic) => (

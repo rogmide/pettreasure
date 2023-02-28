@@ -1,32 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import PetTreasureApi from "../API/Api";
 import "./CommentCard.css";
 
 const CommentCard = ({ comment }) => {
-  //   const [userData, setUserData] = useState("");
   const realTime = new Date(comment.msg_time);
 
-  //   useEffect(
-  //     function PreLoadInfo() {
-  //       async function getIsFavorite() {
-  //         getUserName();
-  //       }
-  //       getIsFavorite();
-  //     },
-
-  //     []
-  //   );
-
-  //   async function getUserName() {
-  //     try {
-  //       let resp = await PetTreasureApi.getUser(comment.user_id);
-  //       setUserData(resp);
-  //     } catch (errors) {
-  //       console.log(errors);
-  //     }
-  //   }
   return (
     <>
       <div className="comment_card">
