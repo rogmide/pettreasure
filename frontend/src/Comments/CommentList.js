@@ -17,6 +17,13 @@ const CommentList = ({ list_msg }) => {
         {list_msg
           ? list_msg.map((c) => <CommentCard key={uuidv4()} comment={c} />)
           : ""}
+        {list_msg.length === 0 ? (
+          <h2 style={{ fontSize: "18px" }}>
+            0 comments yet. Be the first to comment
+          </h2>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

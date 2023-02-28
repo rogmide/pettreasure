@@ -9,7 +9,8 @@ import Favorite from "../Favorite/Favorite.js";
 import UserContext from "../UseContext";
 import CommentForm from "../Comments/CommentForm";
 import CommentList from "../Comments/CommentList";
-import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 const PetDetails = () => {
   const [pet, setPet] = useState();
@@ -129,29 +130,50 @@ const PetDetails = () => {
           </div>
         )}
       </div>
-      <OrganizationCard org={org} />
-      <CommentList list_msg={comment} />
-      {currUser ? (
-        <CommentForm
-          pet_id={pet_id}
-          pet={pet}
-          user={currUser}
-          addCommentForPet={addCommentForPet}
-        />
+      {pet ? (
+        <>
+          <OrganizationCard org={org} />
+          <CommentList list_msg={comment} />
+          {currUser ? (
+            <CommentForm
+              pet_id={pet_id}
+              pet={pet}
+              user={currUser}
+              addCommentForPet={addCommentForPet}
+            />
+          ) : (
+            <>
+              <div
+                className="somePetDetail2"
+                style={{
+                  marginLeft: "60px",
+                  marginRight: "85px",
+                  marginTop: "25px",
+                }}
+              ></div>
+              <div className="loginForComment">
+                <h2>
+                  To leave a comment you need to login{" "}
+                  <FontAwesomeIcon className="titleIcon" icon={faPaw} />
+                  <span className="titlePage">
+                    {" "}
+                    <span style={{ color: "darkred" }}>Pet</span>Treasure{" "}
+                  </span>{" "}
+                  by clicking the button below.
+                </h2>
+                <button
+                  className="loginBtnComment nav-btn"
+                  data-toggle="modal"
+                  data-target="#loginFormModal"
+                >
+                  Login to comment
+                </button>
+              </div>
+            </>
+          )}
+        </>
       ) : (
-        <div>
-          <h2>
-            To leave a comment you need to login PetTreasure by clicking the
-            button below.
-          </h2>
-          <button
-            className=""
-            data-toggle="modal"
-            data-target="#loginFormModal"
-          >
-            Login
-          </button>
-        </div>
+        ""
       )}
     </>
   );

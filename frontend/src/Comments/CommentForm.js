@@ -30,12 +30,28 @@ const CommentForm = ({ pet_id, pet, user, addCommentForPet }) => {
       msg_body: formData.msg_body,
     };
 
+    // AddCommentForPet is coming from a parent component
     addCommentForPet(data);
+    scroll();
     setFormData(INITIAL_STATE);
   }
 
+  // Scroll the screen  when the user add a comment for the pet
+  const scroll = () => {
+    const section = document.querySelector(".comment_holder");
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <>
+      <div
+        className="somePetDetail2"
+        style={{
+          marginLeft: "60px",
+          marginRight: "85px",
+          marginTop: "25px",
+        }}
+      ></div>
       <div className="container msgHolder">
         <h1>Add Comments</h1>
         {error === true ? (
@@ -72,7 +88,12 @@ const CommentForm = ({ pet_id, pet, user, addCommentForPet }) => {
           ></textarea>
           <br></br>
           <div>
-            <button className="btn nav-btn btnLogin float-right">Submit</button>
+            <button
+              style={{ marginBottom: "40px" }}
+              className="btn nav-btn btnLogin float-right"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>
