@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import "../GeneralCSS/Spinner.css";
 import UserContext from "../UseContext";
 
-const PetList = ({ currType, org_id }) => {
+const PetList = ({ currType, org_id, location }) => {
   const [pets, setPets] = useState();
   const [pageCount, setPageCount] = useState(1);
   const { zip_code } = useContext(UserContext);
@@ -27,11 +27,12 @@ const PetList = ({ currType, org_id }) => {
 
   async function getPets(limit = 20, type = currType) {
     try {
-      // HERE HAD TO WORK WITH LOCATION USER LOCATION
-      // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
-      // NEED TO STAR WORKING ON THAT ASAP
-
-      let resp = await PetTreasureApi.getPets(limit, type, 1, zip_code);
+      let resp = await PetTreasureApi.getPets(
+        limit,
+        type,
+        1,
+        location ? location : zip_code
+      );
       setPageCount(1);
       setPets(resp);
     } catch (errors) {
@@ -41,10 +42,6 @@ const PetList = ({ currType, org_id }) => {
 
   async function getPetsForOrg(limit = 20, org_id) {
     try {
-      // HERE HAD TO WORK WITH LOCATION USER LOCATION
-      // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
-      // NEED TO STAR WORKING ON THAT ASAP
-
       let resp = await PetTreasureApi.getPetsForOrg(limit, org_id);
       setPageCount(1);
       setPets(resp);
@@ -55,14 +52,11 @@ const PetList = ({ currType, org_id }) => {
 
   async function loadMore(limit = 20, type = currType) {
     try {
-      // HERE HAD TO WORK WITH LOCATION USER LOCATION
-      // IF THE USER ENTER E ZIP CODE WE WORK WITH THE ZIP CODE TO SEND THE REQUEST
-      // NEED TO STAR WORKING ON THAT ASAP
       let resp = await PetTreasureApi.getPets(
         limit,
         type,
         pageCount + 1,
-        zip_code
+        location ? location : zip_code
       );
       setPageCount(pageCount + 1);
       setPets([...pets, ...resp]);

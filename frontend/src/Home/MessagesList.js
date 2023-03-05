@@ -4,6 +4,7 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./MessagesList.css";
 import MessagesCard from "./MessagesCard";
 import PetTreasureApi from "../API/Api";
+import { v4 as uuidv4 } from "uuid";
 
 const MessagesList = () => {
   const [comment, setComment] = useState();
@@ -17,9 +18,6 @@ const MessagesList = () => {
   async function getPetAndOrganization() {
     try {
       let respComment = await PetTreasureApi.getLastComments();
-      // console.log(respComment);
-      console.log(JSON.parse(respComment[0].pet_info));
-      // console.log(JSON.parse(respComment[0].pet_info).id);
       setComment(respComment);
     } catch (errors) {
       console.log(errors);
@@ -60,7 +58,7 @@ const MessagesList = () => {
             
             */}
 
-              <div className="carousel-item active">
+              <div key={uuidv4()} className="carousel-item active">
                 <MessagesCard
                   src={
                     JSON.parse(comment[0].pet_info).primary_photo_cropped.small
@@ -72,7 +70,7 @@ const MessagesList = () => {
                 />
               </div>
               {comment.slice(1).map((msg) => (
-                <div className="carousel-item">
+                <div key={uuidv4()} className="carousel-item">
                   <MessagesCard
                     src={JSON.parse(msg.pet_info).primary_photo_cropped.small}
                     name={msg.first_name + " " + msg.last_name}

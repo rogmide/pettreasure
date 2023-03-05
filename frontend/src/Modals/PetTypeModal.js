@@ -3,8 +3,6 @@ import MiddleIcon from "../Home/MiddleIcon";
 import {
   faDog,
   faCat,
-  faHippo,
-  faCampground,
   faPaw,
   faHorse,
   faFeather,
