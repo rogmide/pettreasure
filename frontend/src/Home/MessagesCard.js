@@ -2,14 +2,23 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 import "./MessagesList.css";
-const MessagesCard = ({ src, name, msg }) => {
+import { Link } from "react-router-dom";
+
+const MessagesCard = ({ src, name, msg, pet_id, pet_name }) => {
   return (
     <>
       <div
         className="messageHolder"
         style={{ display: "flex", width: "80%", marginTop: "50px" }}
       >
-        <img className="d-block imgLeft" src={src} alt="First slide" />
+        <Link
+          className="linkHolder"
+          to={`/animal/${pet_id}`}
+          // onClick={() => addRecentPetView()}
+        >
+          <img className="d-block imgLeft" src={src} alt="First slide" />
+        </Link>
+
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div>
             <FontAwesomeIcon
@@ -30,6 +39,7 @@ const MessagesCard = ({ src, name, msg }) => {
               width: "auto",
             }}
           >
+            <h2 style={{ color: "#5c717a", fontSize: "35px", marginBottom: "20px" }}>{pet_name}</h2>
             <p style={{ lineHeight: "35px" }}>{msg}</p>
           </div>
           <div

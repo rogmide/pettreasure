@@ -6,6 +6,7 @@ import "./AboutUs.css";
 const AboutUs = () => {
   return (
     <>
+      <h1>UNDER CONSTRUCTION: NEED TO FINISH THE ABOUT PAGE!!!</h1>
       <div
         className="comment_holder"
         style={{ marginTop: "20px", width: "90%" }}

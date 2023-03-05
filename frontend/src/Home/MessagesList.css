@@ -4,6 +4,9 @@
   border: 1px solid black;
   border-radius: 10px;
 }
+.imgLeft:hover {
+  border: 5px solid #f36250;
+}
 
 .carousellHolder {
   /* background-color: #f36250; */

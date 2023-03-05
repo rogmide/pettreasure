@@ -129,4 +129,13 @@ router.get("/getcommentforpet", async function (req, res, next) {
   }
 });
 
+router.get("/getlastcomments", async function (req, res, next) {
+  try {
+    const comments = await Pet.getLastComments();
+    return res.json({ comments });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

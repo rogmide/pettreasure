@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./MessagesList.css";
 import MessagesCard from "./MessagesCard";
+import PetTreasureApi from "../API/Api";
 
 const MessagesList = () => {
+  const [comment, setComment] = useState();
+  useEffect(function PreLoadInfo() {
+    async function getInitialPet() {
+      getPetAndOrganization();
+    }
+    getInitialPet();
+  }, []);
+
+  async function getPetAndOrganization() {
+    try {
+      let respComment = await PetTreasureApi.getLastComments();
+      // console.log(respComment);
+      console.log(JSON.parse(respComment[0].pet_info));
+      // console.log(JSON.parse(respComment[0].pet_info).id);
+      setComment(respComment);
+    } catch (errors) {
+      console.log(errors);
+    }
+  }
+
   return (
     <>
-      <div
-        id="carouselExampleControls"
-        className="carousel slide"
-        data-ride="carousel"
-      >
-        <div className="carousel-inner carousellHolder">
-          <div style={{ marginLeft: "16%" }}>
-            {/* FOR THE CAROUSEL TO WORK HAS TO STAR ON A ACTIVE FIRST AND THEN RUN THE COROUSEL ITEMS
+      {comment ? (
+        <div
+          id="carouselExampleControls"
+          className="carousel slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner carousellHolder">
+            <div style={{ marginLeft: "16%" }}>
+              {/* FOR THE CAROUSEL TO WORK HAS TO STAR ON A ACTIVE FIRST AND THEN RUN THE COROUSEL ITEMS
             
             SOOOOOO
 
@@ -37,61 +59,66 @@ const MessagesList = () => {
 
             
             */}
-            <div className="carousel-item active">
-              <MessagesCard
-                src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                name="Pedro Cannizares"
-                msg="Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!"
-              />
-            </div>
-            <div className="carousel-item">
-              <MessagesCard
-                src="https://images.unsplash.com/photo-1506201803590-8586d5a760e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                name="Roger Delgado"
-                msg="Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!"
-              />
-            </div>
-            <div className="carousel-item">
-              <MessagesCard
-                src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
-                name="Carlos Menendes"
-                msg="Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!"
-              />
+
+              <div className="carousel-item active">
+                <MessagesCard
+                  src={
+                    JSON.parse(comment[0].pet_info).primary_photo_cropped.small
+                  }
+                  name={comment[0].first_name + " " + comment[0].last_name}
+                  msg={comment[0].msg_body}
+                  pet_id={JSON.parse(comment[0].pet_info).id}
+                  pet_name={JSON.parse(comment[0].pet_info).name}
+                />
+              </div>
+              {comment.slice(1).map((msg) => (
+                <div className="carousel-item">
+                  <MessagesCard
+                    src={JSON.parse(msg.pet_info).primary_photo_cropped.small}
+                    name={msg.first_name + " " + msg.last_name}
+                    msg={msg.msg_body}
+                    pet_id={JSON.parse(msg.pet_info).id}
+                    pet_name={JSON.parse(msg.pet_info).name}
+                  />
+                </div>
+              ))}
             </div>
           </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span className="arrowIcon1">
+              <FontAwesomeIcon
+                className="arrowIcon1"
+                style={{
+                  fontSize: "40px",
+                }}
+                icon={faArrowLeft}
+              />
+            </span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span className="arrowIcon1">
+              <FontAwesomeIcon
+                style={{
+                  fontSize: "40px",
+                }}
+                icon={faArrowRight}
+              />
+            </span>
+          </a>
         </div>
-        <a
-          className="carousel-control-prev"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="prev"
-        >
-          <span className="arrowIcon1">
-            <FontAwesomeIcon
-              className="arrowIcon1"
-              style={{
-                fontSize: "40px",
-              }}
-              icon={faArrowLeft}
-            />
-          </span>
-        </a>
-        <a
-          className="carousel-control-next"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="next"
-        >
-          <span className="arrowIcon1">
-            <FontAwesomeIcon
-              style={{
-                fontSize: "40px",
-              }}
-              icon={faArrowRight}
-            />
-          </span>
-        </a>
-      </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

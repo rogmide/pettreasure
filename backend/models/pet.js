@@ -230,6 +230,25 @@ class Pet {
   }
 
   // ########################################################################
+  // getLastComments: Request msg store in the local DB order by date on only getting the last 5 comments
+  //
+  static async getLastComments() {
+    const commPet = await db.query(
+      `SELECT user_id, pet_info, msg_title, msg_body, msg_time, first_name, last_name 
+              from pet_comments as pet 
+              JOIN users as us 
+              on us.username = pet.user_id 
+              ORDER BY msg_time DESC 
+              limit 5`,
+      []
+    );
+
+    const commet = commPet.rows;
+
+    return commet;
+  }
+
+  // ########################################################################
   // Get pet list from the API,
   // Params:
   //      limit: is the limit of pet that the request is going to bring back default 1

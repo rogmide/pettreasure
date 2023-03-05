@@ -116,6 +116,14 @@ class PetTreasureApi {
     return res.pets;
   }
 
+  //######################################################################
+  // End Pets Section
+  //######################################################################
+
+  //######################################################################
+  // Comments Section
+  //######################################################################
+
   // Request to add comment to a pet for a user
   static async addCommentForPet(data) {
     let res = await this.request(`pets/addcommentforpet`, data);
@@ -127,8 +135,13 @@ class PetTreasureApi {
     return res.pets;
   }
 
+  static async getLastComments() {
+    let res = await this.request(`pets/getlastcomments`);
+    return res.comments;
+  }
+
   //######################################################################
-  // End Pets Section
+  // End of Comments Section
   //######################################################################
 
   //######################################################################
@@ -220,23 +233,6 @@ class PetTreasureApi {
 
   //######################################################################
   // End Auth/User Section
-  //######################################################################
-
-  //######################################################################
-  // Jobs/User
-  //######################################################################
-
-  static async applyForJob(username, id) {
-    await this.request(`users/${username}/jobs/${id}`, {}, "post");
-  }
-
-  static async getJobs(title) {
-    let res = await this.request("jobs", { title });
-    return res.jobs;
-  }
-
-  //######################################################################
-  // End Jobs/User
   //######################################################################
 }
 
