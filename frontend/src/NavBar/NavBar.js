@@ -135,12 +135,12 @@ const isLogIn = (name, logout, currUser) => {
           aria-labelledby="dropdownMenuButton"
         >
           <div className="dropMenuItemHolder">
-            <NavLink className="nav-link active dropMenuItem" to="/profile">
+            {/* <NavLink className="nav-link active dropMenuItem" to="/profile">
               Account Info
             </NavLink>
             <NavLink className="nav-link active dropMenuItem" to="/">
               My Recent Search
-            </NavLink>
+            </NavLink> */}
             <NavLink
               className="nav-link active dropMenuItem"
               to="/"
