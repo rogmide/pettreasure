@@ -57,7 +57,7 @@ const HomeMiddle = () => {
             </div>
             <MiddleIcon
               type={faCampground}
-              linkTo="/shelters"
+              linkTo="/organizations"
               animal="Shelters and Rescue"
             />
           </div>

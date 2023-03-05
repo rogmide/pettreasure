@@ -5,7 +5,7 @@ import UserContext from "../UseContext";
 import Favorite from "../Favorite/Favorite";
 import PetTreasureApi from "../API/Api";
 
-const GalleryPetCard = ({ pet, linkTo }) => {
+const GalleryPetCard = ({ pet, linkTo, location }) => {
   const { currUser } = useContext(UserContext);
 
   // On Click to see a Pet Details add that pet to resent pet view.
@@ -72,7 +72,9 @@ const GalleryPetCard = ({ pet, linkTo }) => {
                     {pet ? pet.age : "Loading..."} •{" "}
                     {pet ? pet.breeds.primary : "Loading..."}
                     <p>
-                      {pet.distance ? `${Math.floor(pet.distance)} miles` : ""}
+                      {pet.distance
+                        ? `${Math.floor(pet.distance)} miles (${location})`
+                        : ""}
                     </p>
                   </div>
                 </div>

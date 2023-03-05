@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const CompanySearch = () => {
   const INITIAL_STATE = {
     location: "",
-    animals_type: "dog",
+    animals_type: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ const CompanySearch = () => {
       location: formData.location,
       animals_type: formData.animals_type,
     };
-
+    console.log(data);
+    setFormData(INITIAL_STATE);
     navigate(`/gallery/search/${JSON.stringify(data)}`);
   }
 
@@ -62,6 +63,7 @@ const CompanySearch = () => {
                 <input
                   type="radio"
                   // id="dog"
+                  required
                   name="animals_type"
                   value="dog"
                   checked={formData.animals_type === "dog"}
