@@ -47,23 +47,6 @@ class Pet {
   }
 
   // ########################################################################
-  // getPetByLocation: Search pet by location
-  //
-  // Params:
-  //        location: is going to be use to search pet by the location enter
-  //
-  static async searchPetByLocation(location) {
-    try {
-      const reps = await api_request(`animals/${location}`, {
-        location: location,
-      });
-      return reps.animal;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // ########################################################################
   // getIsFavorite: Get the favorite pet from local DB
   // Params:
   //        pet_id: pet id to request favorite pet for the user
