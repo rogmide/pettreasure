@@ -26,7 +26,7 @@ const MessagesList = () => {
 
   return (
     <>
-      {comment ? (
+      {comment && comment.length != 0 ? (
         <div
           id="carouselExampleControls"
           className="carousel slide"
