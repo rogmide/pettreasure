@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./CommentCard.css";
 
+// ##########################################################
+// CommentCard: is to display a single comment for the pet
+// Params:
+//        comment: is coming from a parent component with a
+//                 single comment info to be display
+//
+
 const CommentCard = ({ comment }) => {
   const realTime = new Date(comment.msg_time);
 

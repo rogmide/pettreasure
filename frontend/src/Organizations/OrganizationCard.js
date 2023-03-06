@@ -8,6 +8,12 @@ import {
 import "./OrganizationCard.css";
 import { Link } from "react-router-dom";
 
+// ##########################################################
+// OrganizationCard: Single organization that is going to be show
+// Params:
+//        org: Current organization info
+//
+
 const OrganizationCard = ({ org }) => {
   return (
     <>

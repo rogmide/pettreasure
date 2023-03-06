@@ -5,6 +5,17 @@ import { v4 as uuidv4 } from "uuid";
 import "../GeneralCSS/Spinner.css";
 import UserContext from "../UseContext";
 
+// ##########################################################
+// PetList: Display a list of pet that is going to be show
+//
+// Params:
+//        currType: current pet that is to show
+//        org_id: organization where the pet is hold
+//        location: will be use to see the location that the user enter
+//                  can change when the user search for a pet
+//        searchVal: is the search value that will be use for the search
+//
+
 const PetList = ({ currType, org_id, location, searchVal }) => {
   const [pets, setPets] = useState();
   const [pageCount, setPageCount] = useState(1);

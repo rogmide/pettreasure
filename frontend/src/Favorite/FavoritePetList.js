@@ -5,11 +5,15 @@ import { v4 as uuidv4 } from "uuid";
 import PetTreasureApi from "../API/Api";
 import "./FavoritePetList.css";
 
+// ##########################################################
+// FavoritePetList: display favorite pet for the user that is login
+//                  display the recent pet view by the user
+//
+
 const FavoritePetList = () => {
   const [pets, setPets] = useState([]);
   const [recent, setRecentPetView] = useState([]);
   const { currUser } = useContext(UserContext);
-  let tempPets = [];
 
   useEffect(
     function PreLoadInfo() {

@@ -3,6 +3,10 @@ import "./SignUpForm.css";
 import { Navigate } from "react-router-dom";
 import $ from "jquery";
 
+// ##########################################################
+// SignUpForm: is the form that is going to be show to the user
+//             in a modal component to sign up into the app
+
 const SignUpForm = ({ signup }) => {
   const INITIAL_STATE = {
     username_SignUp: "",
@@ -31,6 +35,7 @@ const SignUpForm = ({ signup }) => {
       setError("Passwords do NOT match");
       return;
     }
+    // Checking that the password that is enter is the Same
     delete formData.password1;
     let data = {
       username: formData.username_SignUp,
@@ -41,6 +46,7 @@ const SignUpForm = ({ signup }) => {
     delete data.password_SignUp;
 
     const resp = await signup({ ...data });
+    // On a good response the Modal will close by triggering a click on the btn
     if (resp === true) {
       $("#closeBtnSignUp").trigger("click");
       return;
@@ -48,6 +54,7 @@ const SignUpForm = ({ signup }) => {
     setError(resp);
   }
 
+  // Validation to check that user enter correct email format and password format
   const erroMsg = (e) => {
     if (e.target.id === "email") {
       e.target.setCustomValidity("Enter in the format: name@sample.com");

@@ -39,14 +39,12 @@ class PetTreasureApi {
 
   // Requests 20 pets per pages at the time from API using TYpe, Page, and Location
   static async getPets(limit, type, page, location) {
-    console.log("######HERE");
     let res = await this.request(`pets/gallery`, {
       limit: limit,
       type: type,
       page: page,
       location: location,
     });
-    console.log("######HERE", res.pets);
     return res.pets;
   }
 

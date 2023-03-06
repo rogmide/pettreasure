@@ -3,6 +3,15 @@ import "./MiddleIcon.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
+// ##########################################################
+// MessagesList: Comment list that render MessagesCard to show all the comments
+//
+// Params:
+//        type: type of icon (dog, cat, etc)
+//        linkTo: link to destination
+//        animal: name of the animal
+//
+
 const MiddleIcon = ({ type, linkTo, animal }) => {
   return (
     <>

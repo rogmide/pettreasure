@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+// ##########################################################
+// Organizations: Display list of in the homepage limit 5 pets
+
 const PetAviable = () => {
   const [pets, setPets] = useState();
 

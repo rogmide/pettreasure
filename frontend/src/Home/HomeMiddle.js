@@ -10,6 +10,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
+// ##########################################################
+// HomeMiddle: display home middle icons to link to gallery dogs, cats, other and organization
+//
 const HomeMiddle = () => {
   return (
     <>

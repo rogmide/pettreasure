@@ -1,8 +1,11 @@
-import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import "../NavBar/NavBar.css";
 import "./SearchForm.css";
 import { useNavigate } from "react-router-dom";
+
+// ##########################################################
+// CompanySearch: Pet Search Drop to look for pets
+//
 
 const CompanySearch = () => {
   const INITIAL_STATE = {

@@ -5,6 +5,13 @@ import CommentCard from "./CommentCard";
 import "./CommentList.css";
 import { v4 as uuidv4 } from "uuid";
 
+// ##########################################################
+// CommentList: display the list of comment
+//
+// Params:
+//        list_msg: is the list of comment that will be display
+//
+
 const CommentList = ({ list_msg }) => {
   return (
     <>

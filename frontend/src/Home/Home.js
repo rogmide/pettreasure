@@ -8,10 +8,11 @@ import PetAviable from "../Pet/PetAvailable";
 import MessagesList from "./MessagesList";
 import "../NavBar/NavBar.css";
 
-const Home = () => {
-  const { currUser } = useContext(UserContext);
-  // {currUser ? <h2>Welcome Back, {currUser.firstName} !</h2> : NeedLogIn()}
+// ##########################################################
+// Home: display homepage that hold multiple component to build home
+//
 
+const Home = () => {
   return (
     <>
       {" "}
@@ -22,12 +23,15 @@ const Home = () => {
         <HomePetCard />
       </div>
       <div className="">
+        {/* HomeMiddle hold the buttom as guide to look for more pets */}
         <HomeMiddle />
       </div>
       <div>
+        {/* show a display of 5 random pet from any kind to fill home */}
         <PetAviable />
       </div>
       <div>
+        {/* show the last 5 comment added */}
         <MessagesList />
       </div>
     </>

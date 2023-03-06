@@ -6,6 +6,10 @@ import MessagesCard from "./MessagesCard";
 import PetTreasureApi from "../API/Api";
 import { v4 as uuidv4 } from "uuid";
 
+// ##########################################################
+// MessagesList: Comment list that render MessagesCard to show all the comments
+//
+
 const MessagesList = () => {
   const [comment, setComment] = useState();
   useEffect(function PreLoadInfo() {

@@ -3,6 +3,10 @@ import "./LoginForm.css";
 import { Navigate } from "react-router-dom";
 import $ from "jquery";
 
+// ##########################################################
+// LoginForm: is the form that is going to be show to the user
+//            in a modal component to login into the app
+
 const LoginForm = ({ login }) => {
   const INITIAL_STATE = {
     username: "",
@@ -67,9 +71,7 @@ const LoginForm = ({ login }) => {
           ></input>
           <br></br>
           <div>
-            <button className="btn nav-btn btnLogin float-right">
-              Submit
-            </button>
+            <button className="btn nav-btn btnLogin float-right">Submit</button>
           </div>
         </form>
       </div>

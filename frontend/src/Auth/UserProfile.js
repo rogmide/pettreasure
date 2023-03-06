@@ -2,7 +2,13 @@ import React, { useState, useContext } from "react";
 import "./SignUpForm.css";
 import { Navigate } from "react-router-dom";
 import UserContext from "../UseContext";
-import JoblyApi from "../API/Api";
+import PetTreasureApi from "../API/Api";
+
+// ##########################################################
+// UserProfile: is the form that is going to be show to the user
+//            in a modal component to change user info
+//
+// Current Not In Use!!!
 
 const UserProfile = () => {
   const { currUser, setCurrUser } = useContext(UserContext);
@@ -30,7 +36,7 @@ const UserProfile = () => {
     e.preventDefault();
 
     try {
-      let isPasswordCorrect = await JoblyApi.checkUserNamePassword({
+      let isPasswordCorrect = await PetTreasureApi.checkUserNamePassword({
         username: currUser.username,
         password: formData.password,
       });
@@ -40,7 +46,7 @@ const UserProfile = () => {
     }
 
     try {
-      const userUpdated = await JoblyApi.updateUser(currUser.username, {
+      const userUpdated = await PetTreasureApi.updateUser(currUser.username, {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,

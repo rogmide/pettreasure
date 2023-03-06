@@ -3,6 +3,17 @@ import "./CommentForm.css";
 import { Navigate } from "react-router-dom";
 import PetTreasureApi from "../API/Api";
 
+// ##########################################################
+// CommentForm: form to add comment for a pet, into local database
+//
+// Params:
+//        pet_id: use to save the pet_id
+//        pet: use to save the pet_info
+//        user: use to display the user name that enter the comment
+//        addCommentForPet: method to add pet into the local database
+//                          coming from parent componet to update state
+//
+
 const CommentForm = ({ pet_id, pet, user, addCommentForPet }) => {
   const INITIAL_STATE = {
     msg_title: "",

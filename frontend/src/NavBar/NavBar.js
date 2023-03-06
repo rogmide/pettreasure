@@ -11,6 +11,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SearchForm from "../CommunComponent/SearchForm";
 
+// ##########################################################
+// NavBar: Is consistent for all the app
+//
+
 const SearchHeartIcons = (currUser) => {
   return (
     <>

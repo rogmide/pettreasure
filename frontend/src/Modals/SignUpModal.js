@@ -3,6 +3,13 @@ import SignUpForm from "../Auth/SignUpForm";
 // import "./LoginModal.css";
 import "./SignUpModal.css";
 
+// ##########################################################
+// SignUpModal: Modal that handle the signup to the app
+//
+// Params:
+//        signup: method that coming from app component to handle the signup into the page
+//
+
 const SignUpModal = ({ signup }) => {
   return (
     <>

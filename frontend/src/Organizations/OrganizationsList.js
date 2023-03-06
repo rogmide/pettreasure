@@ -6,6 +6,9 @@ import "./OrganizationsList.css";
 import { Link } from "react-router-dom";
 import UserContext from "../UseContext";
 
+// ##########################################################
+// Organizations: Display list of organization for the zip code enter
+
 const Organizations = () => {
   const [orgs, setOrgs] = useState([]);
   const { zip_code } = useContext(UserContext);

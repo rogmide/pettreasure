@@ -13,6 +13,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
+// ##########################################################
+// OrganizationDetails: Single organization detail
+
 const OrganizationDetails = () => {
   const [org, setOrg] = useState();
   const { org_id } = useParams();

@@ -2,6 +2,9 @@ import React from "react";
 import "./PetAvailableCard.css";
 import { Link } from "react-router-dom";
 
+// ##########################################################
+// PetAvailableCard: This is the pet card available for homepage
+
 const PetAvailableCard = ({ pet, linkTo }) => {
   return (
     <>

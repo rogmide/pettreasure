@@ -12,6 +12,13 @@ import CommentList from "../Comments/CommentList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
+// ##########################################################
+// PetDetails: Display the pet details
+//
+//      PetPicCarousel: Component that is use to display the pic for the pet
+//      OrganizationCard: Component to Display organization that is holding the pet
+//      CommentList: Component to add and display comment for that pet
+
 const PetDetails = () => {
   const [pet, setPet] = useState();
   const [org, setOrganization] = useState();

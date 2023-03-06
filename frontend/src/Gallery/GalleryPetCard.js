@@ -5,6 +5,16 @@ import UserContext from "../UseContext";
 import Favorite from "../Favorite/Favorite";
 import PetTreasureApi from "../API/Api";
 
+// ##########################################################
+// GalleryPetCard: Dsiplay a pet card
+//
+// Params:
+//        pet: hold the pet info that come from parent component
+//        linkTo: link to pet detail
+//        location: will be use to see the location that the user enter
+//                  can change when the user search for a pet
+//
+
 const GalleryPetCard = ({ pet, linkTo, location }) => {
   const { currUser } = useContext(UserContext);
 

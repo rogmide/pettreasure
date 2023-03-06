@@ -2,6 +2,13 @@ import React from "react";
 import LoginForm from "../Auth/LoginForm";
 import "./LoginModal.css";
 
+// ##########################################################
+// LoginModal: Modal that handle the login to the app
+//
+// Params:
+//        login: method that coming from app component to handle the login into the page
+//
+
 const LoginModal = ({ login }) => {
   return (
     <>
@@ -44,7 +51,6 @@ const LoginModal = ({ login }) => {
               </div>
             </div>
             <div className="modal-footer">
-
               <button
                 hidden
                 id="closeBtn"

@@ -13,6 +13,10 @@ import "../GeneralCSS/BaseModal.css";
 import "./PetTypeModal.css";
 import OtherAnimalLink from "./OtherAnimalLink";
 
+// ##########################################################
+// PetTypeModal: Component that show pet types to get to gallery and see that type of pets
+//
+
 const PetTypeModal = () => {
   return (
     <>

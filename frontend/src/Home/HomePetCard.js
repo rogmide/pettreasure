@@ -7,6 +7,11 @@ import {
   faBowlFood,
 } from "@fortawesome/free-solid-svg-icons";
 
+// ##########################################################
+// HomePetCard: this is the pet card show on the top of the page is a random pet
+//              that can be refresh if you click the buttom
+//
+
 const HomePetCard = () => {
   const [pet, setPet] = useState();
 

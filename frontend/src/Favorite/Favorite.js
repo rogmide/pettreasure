@@ -5,6 +5,14 @@ import "./Favorite.css";
 import UserContext from "../UseContext";
 import PetTreasureApi from "../API/Api";
 
+// ##########################################################
+// Favorite: add and remove favorite pet for a user into local database
+//           small buttom on top of the pet card
+//
+// Params:
+//        pet: pet info that is going to be use to add into local database
+//
+
 const Favorite = ({ pet }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { currUser } = useContext(UserContext);

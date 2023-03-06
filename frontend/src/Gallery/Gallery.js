@@ -2,6 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import PetList from "./PetList";
 
+// ##########################################################
+// Gallery: Is the main gallery to display pets
+//          Gallery will display the search pet too
+//
+// Params:
+//        currType: is the current type of pet that will be display this can be change
+//        searchVal: is the search value that will be use for the search
+//        animalType: type of animal that will be use to do the search
+//        location: location that will be use to do the search
+//
 const Gallery = ({ currType }) => {
   const { animal, org_id } = useParams();
   const { searchVal } = useParams();

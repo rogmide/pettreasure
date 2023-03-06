@@ -4,6 +4,10 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./PetPicCarousel.css";
 import { v4 as uuidv4 } from "uuid";
 
+// ##########################################################
+// PetPicCarousel: Display the pic for the pet
+//
+
 const PetPicCarousel = ({ pet }) => {
   return (
     <>

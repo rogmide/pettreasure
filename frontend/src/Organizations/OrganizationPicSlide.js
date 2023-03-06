@@ -4,6 +4,12 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./OrganizationPicSlide.css";
 import { v4 as uuidv4 } from "uuid";
 
+// ##########################################################
+// OrganizationPicSlide: Display the Pictures for a Organization
+// Params:
+//        org: Current organization info
+//
+
 const OrganizationPicSlide = ({ org }) => {
   return (
     <>
