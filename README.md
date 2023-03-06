@@ -38,6 +38,18 @@
 	- Nginx
 	- Ubuntu 22.04.1 LTS
 
+- ### To Run The Project Local
+
+	- Get a API TOKEN and API SECRET KEY from https://www.petfinder.com/developers/v2/docs/
+	
+	- run capstone.sql file
+		
+		  psql < capstone.sql
+
+	- With the Database created you need to update "config table" with the API TOKEN and SECRET KEY
+
+		  INSERT INTO config (api_key, secret_key, api_token) VALUES ('API TOKEN', 'API SECRET KEY', 'dont change this field');
+
 
 # Project Proposal
 
