@@ -27,6 +27,10 @@ app.use("/users", usersRoutes);
 app.use("/pets", petsRoutes);
 app.use("/organizations", organizationsRouters);
 
+app.get("/*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
+
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
   return next(new NotFoundError());
