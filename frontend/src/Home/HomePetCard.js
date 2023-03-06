@@ -20,9 +20,7 @@ const HomePetCard = () => {
   async function getRandPet() {
     try {
       let resp = await PetTreasureApi.getRandomPet();
-      if (resp) {
-        setPet(resp[0]);
-      }
+      setPet(resp[0]);
     } catch (errors) {
       console.log(errors);
     }
