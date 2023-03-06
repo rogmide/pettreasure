@@ -1,6 +1,7 @@
 import axios from "axios";
+import env from "./env";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3002";
+const BASE_URL = process.env.REACT_APP_BASE_URL || env.api_url;
 
 class PetTreasureApi {
   // the token for interactive with the API will be stored here.
