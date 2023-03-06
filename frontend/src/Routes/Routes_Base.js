@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Home from "../Home/Home";
-import LoginForm from "../Auth/LoginForm";
-import SignUpForm from "../Auth/SignUpForm";
 import UserProfile from "../Auth/UserProfile";
 import UserContext from "../UseContext";
 import AboutUs from "../AboutUs/AboutUs";
@@ -65,12 +63,12 @@ function Routes_Base({ login, signup }) {
           <Route exact path="/gallery" element={<Gallery />}></Route>
           <Route
             exact
-            path="/gallery/dogs"
+            path="/gallery/dogs/"
             element={<Gallery currType="dog" />}
           ></Route>
           <Route
             exact
-            path="/gallery/cats"
+            path="/gallery/cats/"
             element={<Gallery currType="cat" />}
           ></Route>
           <Route
@@ -80,7 +78,7 @@ function Routes_Base({ login, signup }) {
           ></Route>
           <Route
             exact
-            path="/gallery/others/:animal"
+            path="/gallery/others/:animal/"
             element={<Gallery currType={null} />}
           ></Route>
           <Route
