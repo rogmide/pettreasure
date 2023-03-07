@@ -50,6 +50,29 @@
 
 		  INSERT INTO config (api_key, secret_key, api_token) VALUES ('API TOKEN', 'API SECRET KEY', 'dont change this field');
 
+	- Backend Folder
+
+		  Run in the Console
+		  - npm install
+
+	- This will install all the backend package.json dependencies Then:
+		     
+          Run in the Console
+		  - nodemon server.js 
+		  (if you don't have nodemon use what you use to run the server)
+
+	- Frontend Folder
+
+		  Run in the Console
+		  - npm install
+
+	- This will install all the frontend package.json dependencies Then:
+		     
+          Run in the Console
+		  - npm start
+
+
+
 
 # Project Proposal
 
